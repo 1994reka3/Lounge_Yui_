@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admins
+  devise_for :end_users
   get 'posts/index'
   get 'posts/show'
   get 'posts/new'
