@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   }
 
   namespace :admins do
-    get 'top' => 'home#top', as: 'top'
-    post 'admins/posts/check' => 'posts#check', as: 'posts_check'
-    post 'admins/post_comments/check' => 'post_comments#check', as: 'post_comments_check'
+    get 'top' => 'homes#top', as: 'top'
+    post 'posts/check' => 'posts#check', as: 'posts_check'
+    post 'post_comments/check' => 'post_comments#check', as: 'post_comments_check'
     resources :health_courses
     resources :end_users, only: [:index, :show]
     resources :posts, only: [:index, :show, :destroy] do
@@ -21,9 +21,9 @@ Rails.application.routes.draw do
     passwords: 'end_users/passwords'
   }
 
-  scope module: :end_user do
-    root 'home#top'
-    get 'about' => 'home#about'
+  scope module: :end_users do
+    root 'homes#top'
+    get 'about' => 'homes#about'
     resources :posts do
       resources :post_comments, only: [:create, :destroy]
       resource :likes, only: [:create, :destroy]
