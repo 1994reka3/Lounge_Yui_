@@ -1,14 +1,13 @@
 require 'test_helper'
 
 class EndUsers::EndUsersControllerTest < ActionDispatch::IntegrationTest
-  test "should get show" do
+  test 'should get show' do
     get end_users_end_users_show_url
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get end_users_end_users_edit_url
     assert_response :success
   end
-
 end

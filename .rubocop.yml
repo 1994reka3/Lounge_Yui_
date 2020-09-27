@@ -1,0 +1,23 @@
+inherit_from: .rubocop_todo.yml
+
+AsciiComments:
+  Enabled: false
+
+ClassAndModuleChildren:
+  Enabled: false
+
+AndOr:
+  Enabled: false
+
+AllCops:
+  Exclude:
+    - "bin/**"
+    - "db/**/*"
+    - "lib/**"
+    - "config/**/*"
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
