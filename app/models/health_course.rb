@@ -1,0 +1,2 @@
+class HealthCourse < ApplicationRecord
+end
