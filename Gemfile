@@ -69,3 +69,6 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+
+gem 'bootstrap', '~> 4.1.1'
+gem 'jquery-rails'
