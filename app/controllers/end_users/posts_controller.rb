@@ -10,6 +10,23 @@ class EndUsers::PostsController < ApplicationController
     @genres = Genre.all
   end
 
-  def edit; end
+  def create
+    @post = Post.new(post_params)
+    @post.end_user_id = current_end_user.id
+    @post.save
+    redirect_to post_path(post)
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :contents, :department_id, :genre_id)
+  end
 
 end
