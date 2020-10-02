@@ -8,7 +8,7 @@ class EndUser < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  validates :name, presence: true, uniqueness: true,length: {in: 1..20}
+  validates :name, presence: true, uniqueness: true, length: { in: 1..20 }
   validates :birthday, presence: true
   validates :postal_code, presence: true
   validates :email, presence: true, uniqueness: true
