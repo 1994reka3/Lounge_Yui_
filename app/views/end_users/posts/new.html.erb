@@ -10,7 +10,7 @@
 <!-- 新規投稿フォーム -->
 <div class="row justify-content-center">
   <div class="col-md-8">
-    <%= form_for(@post, url: posts_path) do |f| %>
+    <%= form_for(@post) do |f| %>
       <div class="row">
         <label>タイトル</label>
         <%= f.text_field :title %>
@@ -21,11 +21,11 @@
       </div>
       <div class="row">
         <label>診療科</label>
-        <%= f.collection_select(:department_id, @departments, :id, :name, { prompt: "選択してください" }) %>
+        <%= f.collection_select(:department_id, Department.all, :id, :name, { prompt: "選択してください" }) %>
       </div>
       <div class="row">
         <label>ジャンル</label>
-        <%= f.collection_select(:genre_id, @genres, :id, :name, { prompt: "選択してください" }) %>
+        <%= f.collection_select(:genre_id, Genre.all, :id, :name, { prompt: "選択してください" }) %>
       </div>
       <div class="row">
         <%= f.submit "投稿する" %>

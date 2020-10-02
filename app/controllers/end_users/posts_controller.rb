@@ -4,19 +4,22 @@ class EndUsers::PostsController < ApplicationController
     @posts = Post.all
   end
 
-  def show; end
+  def show
+    @post = Post.find(params[:id])
+  end
 
   def new
     @post = Post.new
-    @departments = Department.all
-    @genres = Genre.all
   end
 
   def create
     @post = Post.new(post_params)
     @post.end_user_id = current_end_user.id
-    @post.save
-    redirect_to post_path(post)
+    if @post.save
+      redirect_to post_path(@post.id)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -26,7 +29,6 @@ class EndUsers::PostsController < ApplicationController
   end
 
   private
-
   def post_params
     params.require(:post).permit(:title, :contents, :department_id, :genre_id)
   end
