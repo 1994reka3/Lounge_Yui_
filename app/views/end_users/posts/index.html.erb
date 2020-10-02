@@ -6,6 +6,13 @@
   <!-- 投稿情報 -->
   <div class="col-md-6">
     <h2>新着投稿情報</h2>
+    <% @posts.each do |post| %>
+      <%= link_to post_path(post) do %>
+        <%= post.title %>
+      <% end %>
+      <%= post.genre.name %>
+      <%= post.contents %>
+    <% end %>
   </div>
   <!-- 新規投稿、管理人からのお願い -->
   <div class="col-md-3">
