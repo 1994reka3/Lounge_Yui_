@@ -12,15 +12,19 @@
   <div class="col-md-8">
     <%= form_for(@post, url: posts_path) do |f| %>
       <div class="row">
+        <label>タイトル</label>
         <%= f.text_field :title %>
       </div>
       <div class="row">
+        <label>本文</label>
         <%= f.text_area :contents %>
       </div>
       <div class="row">
+        <label>診療科</label>
         <%= f.collection_select(:department_id, @departments, :id, :name, { prompt: "選択してください" }) %>
       </div>
       <div class="row">
+        <label>ジャンル</label>
         <%= f.collection_select(:genre_id, @genres, :id, :name, { prompt: "選択してください" }) %>
       </div>
       <div class="row">
