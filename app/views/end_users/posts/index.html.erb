@@ -1,2 +1,22 @@
-<h1>EndUsers::Posts#index</h1>
-<p>Find me in app/views/end_users/posts/index.html.erb</p>
+<div class="row">
+  <!-- 検索系のサイドバー -->
+  <div class="col-md-3">
+    <!-- 検索系のサイドバー予定 -->
+  </div>
+  <!-- 投稿情報 -->
+  <div class="col-md-6">
+    <h2>新着投稿情報</h2>
+    <% @posts.each do |post| %>
+      <%= link_to post_path(post) do %>
+        <%= post.title %>
+      <% end %>
+      <%= post.genre.name %>
+      <%= post.contents %>
+    <% end %>
+  </div>
+  <!-- 新規投稿、管理人からのお願い -->
+  <div class="col-md-3">
+    <%= link_to "記事投稿はこちら", new_post_path %>
+    <p>ご利用上の注意</p>
+  </div>
+</div>

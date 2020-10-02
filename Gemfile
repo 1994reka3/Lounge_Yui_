@@ -72,3 +72,5 @@ end
 
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
+
+gem 'ancestry'
