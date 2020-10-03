@@ -1,11 +1,12 @@
 class EndUsers::PostsController < ApplicationController
+  before_action :ensure_post, only: [:show, :edit, :update]
 
   def index
     @posts = Post.all
   end
 
   def show
-    @post = Post.find(params[:id])
+    @end_user = @post.end_user
   end
 
   def new
@@ -29,8 +30,13 @@ class EndUsers::PostsController < ApplicationController
   end
 
   private
+
   def post_params
     params.require(:post).permit(:title, :contents, :department_id, :genre_id)
+  end
+
+  def ensure_post
+    @post = Post.find(params[:id])
   end
 
 end

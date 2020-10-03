@@ -1,2 +1,74 @@
-<h1>EndUsers::Posts#show</h1>
-<p>Find me in app/views/end_users/posts/show.html.erb</p>
+<div class="row">
+  <!-- 検索系のサイドバー -->
+  <div class="col-md-3">
+    <!-- 検索系のサイドバー予定 -->
+  </div>
+  <!-- 投稿詳細 -->
+  <div class="col-md-6 post-area" style="padding: 0;">
+    <!-- 詳細上部 -->
+    <div class="post-header">
+      <div class="row post-header-top">
+        <div class="col-md-2">
+          <%= @post.genre.name  %>
+        </div>
+        <div class="col-md-8">
+          <%= @post.title %>
+        </div>
+        <div class="col-md-1">
+          <p>14</p>
+        </div>
+        <div class="col-md-1">
+          <p>2</p>
+        </div>
+      </div>
+      <div class="row post-header-bottom">
+        <div class="col-md-8">
+          <%= link_to end_user_path(@post.end_user) do %>
+            <p class="end_user_name"><%= @post.end_user.name %><small>さん</small></p>
+          <% end %>
+        </div>
+        <div class="col-md-4">
+          <p class="text-right"><%= @post.created_at.strftime('%Y/%m/%d') %></p>
+        </div>
+      </div>
+    </div>
+    <!-- 詳細メイン -->
+    <div class="row post-body-main">
+      <div class="col-md-12">
+        <%= @post.contents %>
+      </div>
+    </div>
+    <div class="row post-body-sub">
+      <div class="col-md-6">
+        <%= @post.department.name %>
+      </div>
+      <!-- 投稿したユーザーだったら編集・削除ボタン表示 -->
+      <% if current_end_user == @end_user %>
+      <div class="col-md-3">
+        <%= link_to "編集する", edit_post_path(@post) %>
+      </div>
+      <div class="col-md-3">
+        <%= link_to "削除する", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？" %>
+      </div>
+      <% end %>
+    </div>
+    <!-- 詳細下部 -->
+    <div class="row post-footer">
+      <div class="col-md-6">
+        <p>いいねボタン</p>
+      </div>
+      <div class="col-md-6">
+        <p>コメントボタン</p>
+      </div>
+    </div>
+    <!-- 前のページへ戻るボタン -->
+    <div class="row">
+      <%= link_to "前のページへ戻る", :back %>
+    </div>
+  </div>
+  <!-- 新規投稿、管理人からのお願い -->
+  <div class="col-md-3">
+    <%= link_to "記事投稿はこちら", new_post_path %>
+    <p>ご利用上の注意</p>
+  </div>
+</div>
