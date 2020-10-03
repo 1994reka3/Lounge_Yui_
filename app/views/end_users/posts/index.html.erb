@@ -8,22 +8,25 @@
     <h2 class="text-center">新着投稿情報</h2>
     <% @posts.each do |post| %>
       <div class="row post-index">
-        <div class="col-md-6">
+        <div class="col-md-4 pt-2">
+          <p><%= post.genre.name %></p>
+        </div>
+        <div class="col-md-4 pt-2">
+          <p><%= post.created_at.strftime('%Y/%m/%d') %></p>
+        </div>
+        <div class="col-md-2 pt-2">
+          <p>14</p>
+        </div>
+        <div class="col-md-2 pt-2">
+          <p>2</p>
+        </div>
+        <div class="col-md-12 pt-2">
           <%= link_to post_path(post) do %>
             <p class="post-title"><%= post.title %></p>
           <% end %>
         </div>
-        <div class="col-md-4">
-          <%= post.genre.name %>
-        </div>
-        <div class="col-md-1">
-          <p>14</p>
-        </div>
-        <div class="col-md-1">
-          <p>2</p>
-        </div>
         <div class="col-md-12 post-contents-area">
-          <%= post.contents %>
+          <p><%= post.contents %></p>
         </div>
       </div>
     <% end %>

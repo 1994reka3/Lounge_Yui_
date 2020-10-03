@@ -8,27 +8,27 @@
     <!-- 詳細上部 -->
     <div class="post-header">
       <div class="row post-header-top">
-        <div class="col-md-2">
-          <%= @post.genre.name  %>
+        <div class="col-md-2 pt-2 pl-4">
+          <p><%= @post.genre.name %></p>
         </div>
-        <div class="col-md-8">
-          <%= @post.title %>
+        <div class="col-md-8 pt-2">
+          <p class="post-title"><%= @post.title %></p>
         </div>
-        <div class="col-md-1">
+        <div class="col-md-1 pt-2">
           <p>14</p>
         </div>
-        <div class="col-md-1">
+        <div class="col-md-1 pt-2">
           <p>2</p>
         </div>
       </div>
       <div class="row post-header-bottom">
-        <div class="col-md-8">
+        <div class="col-md-7 pt-1">
           <%= link_to end_user_path(@post.end_user) do %>
-            <p class="end_user_name"><%= @post.end_user.name %><small>さん</small></p>
+            <p class="end_user_name">投稿者：<%= @post.end_user.name %><small>さん</small></p>
           <% end %>
         </div>
-        <div class="col-md-4">
-          <p class="text-right"><%= @post.created_at.strftime('%Y/%m/%d') %></p>
+        <div class="col-md-5 pt-1">
+          <p>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
         </div>
       </div>
     </div>
@@ -39,16 +39,16 @@
       </div>
     </div>
     <div class="row post-body-sub">
-      <div class="col-md-6">
+      <div class="col-md-8">
         <p><%= @post.department.name %></p>
       </div>
       <!-- 投稿したユーザーだったら編集・削除ボタン表示 -->
       <% if current_end_user == @end_user %>
-      <div class="col-md-3">
-        <p><%= link_to "編集する", edit_post_path(@post) %></p>
+      <div class="col-md-2">
+        <p><%= link_to "編集する", edit_post_path(@post), class: "btn btn-outline-info btn-sm"%></p>
       </div>
-      <div class="col-md-3">
-        <p><%= link_to "削除する", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？" %></p>
+      <div class="col-md-2">
+        <p><%= link_to "削除する", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-outline-danger btn-sm" %></p>
       </div>
       <% end %>
     </div>
@@ -60,10 +60,6 @@
       <div class="col-md-6">
         <p>コメントボタン</p>
       </div>
-    </div>
-    <!-- 前のページへ戻るボタン -->
-    <div class="row">
-      <%= link_to "前のページへ戻る", :back %>
     </div>
   </div>
   <!-- 新規投稿、管理人からのお願い -->

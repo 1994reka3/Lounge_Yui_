@@ -15,6 +15,31 @@
  */
 @import "bootstrap";
 
+//ユーザー新規登録画面
+.post-announcement {
+  margin: 2em 0;
+  background: #dcefff;
+}
+.headline {
+  font-size: 1.2em;
+  background: #5fb3f5;
+  padding: 4px;
+  text-align: center;
+  color: #FFF;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+.text {
+  padding: 15px 20px;
+  margin: 0;
+  p {
+    border-bottom: 1px solid #000;
+  }
+  ul {
+    margin: 0 auto;
+  }
+}
+
 //ユーザー投稿一覧画面
 .post-index {
   margin: 50px 0;
@@ -29,12 +54,18 @@
     padding: 0;
   }
   .post-contents-area {
-   height: 70px;
+    height: 130px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+    padding: 10px;
   }
   .post-title {
     color: #454545;
     text-decoration: none;
     padding: 0 10px;
+    font-size: 25px;
   }
 }
 .post-index:after {
@@ -61,21 +92,26 @@
     margin: 0;
     padding: 0;
   }
+  .post-title {
+    color: #454545;
+    padding: 0 10px;
+    font-size: 25px;
+  }
   .end_user_name {
     color: #454545;
     text-decoration: none;
     padding: 0 10px;
   }
   .post-body-main {
-    padding: 15px 20px;
+    padding: 15px 10px;
     margin: 0;
   }
   .post-body-sub {
-    padding: 15px 20px;
+    padding: 15px 10px;
     margin: 0;
   }
   .post-footer {
-    padding: 15px 20px;
+    padding: 15px 10px;
     margin: 0;
   }
 }
