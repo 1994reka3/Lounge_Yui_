@@ -3,5 +3,4 @@ class PostComment < ApplicationRecord
   belongs_to :post
 
   validates :comment, presence: true
-  validates :mark, presence: true
 end
