@@ -7,5 +7,4 @@ class Post < ApplicationRecord
 
   validates :title, presence: true
   validates :contents, presence: true
-  validates :mark, presence: true
 end

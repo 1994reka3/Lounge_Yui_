@@ -14,3 +14,230 @@
  *= require_self
  */
 @import "bootstrap";
+
+body {
+  color: #555;
+}
+
+//ヘッダーのログイン関係ボタン
+.login-btns {
+  .btns {
+    text-decoration: none;
+    color: #555;
+  }
+  .btns:hover {
+    color: #fff;
+  }
+}
+.btn-flat-mypage {
+  position: relative;
+  display: table-cell;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-bottom: solid 4px #ff7d6e;
+  color: #FC964B;
+  transition: .4s;
+  width: 50%;
+  text-align: center;
+}
+.btn-flat-mypage:hover {
+  background-color: #ff7d6e;
+  color: #FFF;
+}
+.btn-flat-logout {
+  color: #FC964B;
+  position: relative;
+  display: table-cell;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-bottom: solid 4px #A87B6A;
+  transition: .4s;
+  width: 50%;
+  text-align: center;
+}
+.btn-flat-logout:hover {
+  color: #FFF;
+  background-color: #A87B6A;
+}
+.btn-flat-new-registration {
+  color: #FC964B;
+  position: relative;
+  display: table-cell;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-bottom: solid 4px #28a745;
+  transition: .4s;
+  width: 50%;
+  text-align: center;
+}
+.btn-flat-new-registration:hover {
+  color: #FFF;
+  background-color: #28a745;
+}
+.btn-flat-new-session {
+  color: #FC964B;
+  position: relative;
+  display: table-cell;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-bottom: solid 4px #17a2b8;
+  transition: .4s;
+  width: 50%;
+  text-align: center;
+}
+.btn-flat-new-session:hover {
+  color: #FFF;
+  background-color: #17a2b8;
+}
+
+
+//ナビゲーションバー
+nav ul {
+  display: table;
+  margin: 0 auto;
+  padding: 0;
+  width: 60%;
+  text-align: center;
+  li {
+    display: table-cell;
+    min-width: 50px;
+    font-weight: bold;
+    height: 50px;
+    font-size: 18px;
+    border-bottom: 4px solid #668ad8;
+    .nav-list {
+      text-decoration: none;
+      line-height: 50px;
+      transition: .4s;
+    }
+    .nav-list:hover {
+      color: #fff;
+    }
+    a {
+      display: block;
+      width: 100%;
+      color: #555;
+      padding-bottom: 5px;
+    }
+  }
+  li:hover {
+    background-color: #668ad8;
+    color: #fff;
+  }
+}
+
+
+//ユーザー新規登録画面
+.post-announcement {
+  margin: 2em 0;
+  background: #dcefff;
+}
+.headline {
+  font-size: 1.2em;
+  background: #5fb3f5;
+  padding: 4px;
+  text-align: center;
+  color: #FFF;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+.text {
+  padding: 15px 20px;
+  margin: 0;
+  p {
+    border-bottom: 1px solid #000;
+  }
+  ul {
+    margin: 0 auto;
+  }
+}
+
+//ユーザー投稿一覧画面
+.post-index {
+  margin: 50px 0;
+  position: relative;
+  background-color: #fff8e8;
+  box-shadow: 0px 0px 0px 5px #fff8e8;
+  border: dashed 2px #f89174;
+  padding: 0.2em 0.5em;
+  color: #454545;
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  .post-contents-area {
+    height: 130px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+    padding: 10px;
+  }
+  .post-title {
+    color: #454545;
+    text-decoration: none;
+    padding: 0 10px;
+    font-size: 25px;
+  }
+}
+.post-index:after {
+  position: absolute;
+  content: '';
+  right: -7px;
+  top: -7px;
+  border-width: 0 15px 15px 0;
+  border-style: solid;
+  border-color: #ffdb88 #fff #ffdb88;
+  box-shadow: -1px 1px 1px rgba( 0, 0, 0, 0.15);
+}
+
+//ユーザー投稿詳細画面
+.post-area {
+  margin: 50px 0;
+  position: relative;
+  background-color: #fff8e8;
+  box-shadow: 0px 0px 0px 5px #fff8e8;
+  border: dashed 2px #f89174;
+  padding: 0.2em 0.5em;
+  color: #454545;
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  .post-title {
+    color: #454545;
+    padding: 0 10px;
+    font-size: 25px;
+  }
+  .end_user_name {
+    color: #454545;
+    text-decoration: none;
+    padding: 0 10px;
+  }
+  .post-body-main {
+    padding: 15px 10px;
+    margin: 0;
+  }
+  .post-body-sub {
+    padding: 15px 10px;
+    margin: 0;
+  }
+  .post-footer {
+    padding: 15px 10px;
+    margin: 0;
+  }
+}
+.post-area:after {
+  position: absolute;
+  content: '';
+  right: -7px;
+  top: -7px;
+  border-width: 0 15px 15px 0;
+  border-style: solid;
+  border-color: #ffdb88 #fff #ffdb88;
+  box-shadow: -1px 1px 1px rgba( 0, 0, 0, 0.15);
+}
