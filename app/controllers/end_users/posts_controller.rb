@@ -1,5 +1,5 @@
 class EndUsers::PostsController < ApplicationController
-  before_action :ensure_post, only: [:show, :edit, :update]
+  before_action :ensure_post, only: [:show, :edit, :update, :destroy]
 
   def index
     @posts = Post.all
@@ -24,9 +24,22 @@ class EndUsers::PostsController < ApplicationController
   end
 
   def edit
+    if current_end_user.id != @post.end_user_id
+      redirect_to posts_path
+    end
   end
 
   def update
+    if @post.update(post_params)
+      redirect_to post_path(@post)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @post.destroy
+    redirect_to posts_path
   end
 
   private

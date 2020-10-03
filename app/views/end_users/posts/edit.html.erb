@@ -1,2 +1,53 @@
-<h1>EndUsers::Posts#edit</h1>
-<p>Find me in app/views/end_users/posts/edit.html.erb</p>
+<!-- ご利用上の注意 -->
+<div class="row justify-content-center">
+  <div class="col-md-8 post-announcement">
+    <div class="row headline justify-content-center">
+      <h2>投稿する際の注意点</h2>
+    </div>
+    <div class="row text justify-content-center">
+      <p>〜　安全にご利用いただけるよう、以下の対策をとっております　〜</p>
+        <ul>
+          <li>投稿内容はすべて目視による監視を実施しております</li>
+          <li>不適切な情報や投稿があった場合速やかに削除いたします</li>
+        </ul>
+    </div>
+  </div>
+</div>
+<!-- 投稿編集フォーム -->
+<div class="form-group row justify-content-center">
+  <div class="col-md-8">
+    <%= form_for(@post) do |f| %>
+      <div class="row">
+        <label class="col-md-2 col-form-label m-2 p-2">タイトル</label>
+        <div class="col-md-8 m-2 p-2">
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+      </div>
+      <div class="row">
+        <label class="col-md-2 col-form-label m-2 p-2">本文</label>
+        <div class="col-md-8 m-2 p-2">
+          <%= f.text_area :contents, class: "form-control", rows: 10 %>
+        </div>
+      </div>
+      <div class="row">
+        <label class="col-md-2 col-form-label m-2 p-2">診療科</label>
+        <div class="col-md-4 m-2 p-2">
+          <%= f.collection_select(:department_id, Department.all, :id, :name, { prompt: "選択してください" }, {class: "form-control"}) %>
+        </div>
+      </div>
+      <div class="row">
+        <label class="col-md-2 col-form-label m-2 p-2">ジャンル</label>
+        <div class="col-md-4 m-2 p-2">
+          <%= f.collection_select(:genre_id, Genre.all, :id, :name, { prompt: "選択してください" }, {class: "form-control"}) %>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="actions">
+          <div class="col-md-2 m-2 p-2">
+            <%= f.submit "変更する", class: "btn btn-outline-info" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
