@@ -4,7 +4,7 @@
     <!-- 検索系のサイドバー予定 -->
   </div>
   <!-- 投稿詳細 -->
-  <div class="col-md-6 post-area" style="padding: 0;">
+  <div class="col-md-6 post-area">
     <!-- 詳細上部 -->
     <div class="post-header">
       <div class="row post-header-top">
@@ -35,20 +35,20 @@
     <!-- 詳細メイン -->
     <div class="row post-body-main">
       <div class="col-md-12">
-        <%= @post.contents %>
+        <p><%= @post.contents %></p>
       </div>
     </div>
     <div class="row post-body-sub">
       <div class="col-md-6">
-        <%= @post.department.name %>
+        <p><%= @post.department.name %></p>
       </div>
       <!-- 投稿したユーザーだったら編集・削除ボタン表示 -->
       <% if current_end_user == @end_user %>
       <div class="col-md-3">
-        <%= link_to "編集する", edit_post_path(@post) %>
+        <p><%= link_to "編集する", edit_post_path(@post) %></p>
       </div>
       <div class="col-md-3">
-        <%= link_to "削除する", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？" %>
+        <p><%= link_to "削除する", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか？" %></p>
       </div>
       <% end %>
     </div>
