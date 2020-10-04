@@ -1,4 +1,5 @@
 class EndUsers::PostsController < ApplicationController
+  before_action :authenticate_end_user!, except: [:index]
   before_action :ensure_post, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -18,6 +19,7 @@ class EndUsers::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.end_user_id = current_end_user.id
     if @post.save
+      flash[:success] = "投稿が完了しました"
       redirect_to post_path(@post.id)
     else
       render :new
@@ -32,6 +34,7 @@ class EndUsers::PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
+      flash[:success] = "投稿を変更しました"
       redirect_to post_path(@post)
     else
       render :edit
