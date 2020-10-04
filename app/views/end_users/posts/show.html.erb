@@ -18,19 +18,16 @@
           <!-- いいね数 -->
           <div class="col-md-2 pt-2">
             <% if @post.liked_by?(current_end_user) %>
-              <%= link_to post_likes_path(post), method: :delete do %>
-                <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-                <%= @post.likes.count %>
-              <% end %>
+              <i class="fas fa-heart" aria-hidden="true" style="color: #EC407A;"></i>
+              <%= @post.likes.count %>
             <% else %>
-              <%= link_to post_likes_path(@post), method: :post do %>
-                <p><i class="far fa-heart" aria-hidden="true"></i>  <%= @post.likes.count %></p>
-              <% end %>
+              <i class="far fa-heart" aria-hidden="true"></i>
+              <%= @post.likes.count %>
             <% end %>
           </div>
           <!-- コメント数 -->
           <div class="col-md-2 pt-2">
-            <p><i class="fas fa-comment-alt"></i>  <%= @post.post_comments.count %></p>
+            <i class="fas fa-comment-alt" style="color: #007bff;"></i>  <%= @post.post_comments.count %>
           </div>
         </div>
         <div class="row post-header-bottom">
@@ -63,13 +60,18 @@
       <!-- 詳細下部 -->
       <div class="col-md-12 d-flex justify-content-around post-footer">
         <div class="d-flex align-items-center">
-          <p>いいねボタン</p>
+          <!-- いいねボタン -->
+          <% if @post.liked_by?(current_end_user) %>
+              <%= link_to post_likes_path(@post), method: :delete, class: "like-btn" do %>いいねを取り消す
+              <% end %>
+            <% else %>
+              <%= link_to post_likes_path(@post), method: :post, class: "like-btn" do %>いいねを送る
+              <% end %>
+            <% end %>
         </div>
         <div class="d-flex align-items-center">
-          <!-- ボタンによってコメントフォーム表示・非表示切り替え -->
-          <button id="comment-button" class="btn btn-primary" type="submit">
-            <i class="fas fa-comment-alt"></i>コメントする
-          </button>
+          <!-- コメントボタン　フォーム表示・非表示切り替え -->
+          <button id="comment-btn" class="comment-btn">コメントする</button>
         </div>
       </div>
       <div id="new-comment" class="form-group col-md-12 pt-4" style="display: none">
@@ -84,23 +86,32 @@
       </div>
     </div>
     <!-- コメント表示 -->
-    <div class="col-md-6">
-      <div class="row post-comment-area">
-        <ol>
-          <% @post.post_comments.each do |post_comment| %>
-            <li>
-              <div class="col-md-6">投稿者：<%= post_comment.end_user.name %><small> さん</small></div>
-              <div class="col-md-4">投稿日：<%= post_comment.created_at.strftime('%Y/%m/%d') %></div>
-              <p><%= post_comment.comment %></p>
-              <% if end_user_signed_in? && current_end_user == @end_user %>
-                <p><%= link_to "削除",post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に消しますか？" %></p>
+    <ol>
+      <% @post.post_comments.each do |post_comment| %>
+        <li>
+          <div class="row post-comment-area">
+            <div class="col-md-7 pt-1">
+              <%= link_to end_user_path(post_comment.end_user) do %>
+                <p class="post_comment_end_user_name">
+                  投稿者：<%= post_comment.end_user.name %><small> さん</small>
+                </p>
               <% end %>
-            </li>
-          <% end %>
-        </ol>
-      </div>
-    </div>
+            </div>
+            <div class="col-md-5 pt-1">
+              投稿日：<%= post_comment.created_at.strftime('%Y/%m/%d') %>
+            </div>
+            <div class="col-md-12"><%= post_comment.comment %></div>
+            <% if end_user_signed_in? && post_comment.end_user == current_end_user %>
+              <div class="col-md-11 text-right">
+                <%= link_to "削除",post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-outline-danger btn-sm", "data-confirm" => "本当に消しますか？" %>
+              </div>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    </ol>
   </div>
+
   <!-- 新規投稿、管理人からのお願い -->
   <div class="col-md-3">
     <%= link_to "記事投稿はこちら", new_post_path %>
