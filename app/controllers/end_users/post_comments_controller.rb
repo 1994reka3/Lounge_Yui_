@@ -5,6 +5,7 @@ class EndUsers::PostCommentsController < ApplicationController
     @comment = current_end_user.post_comments.new(post_comment_params)
     @comment.post_id = @post.id
     if @comment.save
+      flash[:success] = "コメントしました"
       redirect_to post_path(@post)
     else
       render 'posts/show'
