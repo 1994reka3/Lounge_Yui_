@@ -18,19 +18,16 @@
           <!-- いいね数 -->
           <div class="col-md-2 pt-2">
             <% if @post.liked_by?(current_end_user) %>
-              <%= link_to post_likes_path(post), method: :delete do %>
-                <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-                <%= @post.likes.count %>
-              <% end %>
+              <i class="fas fa-heart" aria-hidden="true" style="color: #EC407A;"></i>
+              <%= @post.likes.count %>
             <% else %>
-              <%= link_to post_likes_path(@post), method: :post do %>
-                <p><i class="far fa-heart" aria-hidden="true"></i>  <%= @post.likes.count %></p>
-              <% end %>
+              <i class="far fa-heart" aria-hidden="true"></i>
+              <%= @post.likes.count %>
             <% end %>
           </div>
           <!-- コメント数 -->
           <div class="col-md-2 pt-2">
-            <p><i class="fas fa-comment-alt"></i>  <%= @post.post_comments.count %></p>
+            <i class="fas fa-comment-alt" style="color: #007bff;"></i>  <%= @post.post_comments.count %>
           </div>
         </div>
         <div class="row post-header-bottom">
@@ -63,13 +60,18 @@
       <!-- 詳細下部 -->
       <div class="col-md-12 d-flex justify-content-around post-footer">
         <div class="d-flex align-items-center">
-          <p>いいねボタン</p>
+          <!-- いいねボタン -->
+          <% if @post.liked_by?(current_end_user) %>
+              <%= link_to post_likes_path(@post), method: :delete, class: "like-btn" do %>いいねを取り消す
+              <% end %>
+            <% else %>
+              <%= link_to post_likes_path(@post), method: :post, class: "like-btn" do %>いいねを送る
+              <% end %>
+            <% end %>
         </div>
         <div class="d-flex align-items-center">
-          <!-- ボタンによってコメントフォーム表示・非表示切り替え -->
-          <button id="comment-button" class="btn btn-primary" type="submit">
-            <i class="fas fa-comment-alt"></i>コメントする
-          </button>
+          <!-- コメントボタン　フォーム表示・非表示切り替え -->
+          <button id="comment-btn" class="comment-btn">コメントする</button>
         </div>
       </div>
       <div id="new-comment" class="form-group col-md-12 pt-4" style="display: none">

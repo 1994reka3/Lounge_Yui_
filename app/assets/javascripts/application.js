@@ -20,7 +20,7 @@
 //= require_tree .
 $(document).on('turbolinks:load', function () {
   $(function () {
-    $('#comment-button').on('click', () => {
+    $('#comment-btn').on('click', () => {
       $('#new-comment').toggle('slow');
     });
   });

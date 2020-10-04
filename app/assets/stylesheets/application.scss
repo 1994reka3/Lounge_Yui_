@@ -229,6 +229,9 @@ nav ul {
   .post-footer {
     padding: 15px 10px;
     margin: 0;
+    .like-btn {
+      text-decoration: none;
+    }
   }
 }
 .post-area:after {
@@ -269,4 +272,36 @@ nav ul {
   border-style: solid;
   border-color: #fff8e8 #fff #fff8e8;
   box-shadow: -1px 1px 1px rgba( 0, 0, 0, 0.15);
+}
+//いいねボタン
+.like-btn {
+  display: block;
+  width: 160px;
+  padding: 0.5em;
+  text-align: center;
+  text-decoration: none;
+  color: #EC407A;
+  border: 2px solid #EC407A;
+  border-radius: 3px;
+  transition: .4s;
+}
+.like-btn:hover {
+  background: #EC407A;
+  color: #fff;
+}
+//コメントボタン
+.comment-btn {
+  display: block;
+  width: 160px;
+  padding: 0.5em;
+  text-align: center;
+  text-decoration: none;
+  color: #007bff;
+  border: 2px solid #007bff;
+  border-radius: 3px;
+  transition: .4s;
+}
+.comment-btn:hover {
+  background: #007bff;
+  color: #fff;
 }

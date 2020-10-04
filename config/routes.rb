@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     root 'homes#top'
     get 'about' => 'homes#about'
     resources :posts do
-      resources :post_comments, except: %i[index show]
+      resources :post_comments, only: %i[create destroy]
       resource :likes, only: %i[create destroy]
     end
     resources :end_users, only: %i[show edit update]
