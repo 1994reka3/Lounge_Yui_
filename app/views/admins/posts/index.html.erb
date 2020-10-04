@@ -1,2 +1,40 @@
-<h1>Admins::Posts#index</h1>
-<p>Find me in app/views/admins/posts/index.html.erb</p>
+<div class="row">
+  <div class="col-md-2">
+    投稿未確認件数　5件
+    <!-- 投稿コメント未確認件数 -->
+  </div>
+  <!-- 投稿一覧 -->
+  <div class="col-md-10">
+    <h2 class="text-center">投稿一覧</h2>
+    <div class="row">
+    <table class="table table-hovel">
+      <thead>
+        <tr>
+          <th>投稿日</th>
+          <th>タイトル</th>
+          <th>本文</th>
+          <th>ジャンル</th>
+          <th>いいね数</th>
+          <th>コメント数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <td scope="row"><%= post.created_at.strftime('%Y/%m/%d') %></td>
+            <td>
+              <%= link_to admins_post_path(post) do %>
+                <%= post.title %>
+              <% end %>
+            </td>
+            <td><%= post.contents %></td>
+            <td><%= post.genre.name %></td>
+            <td><i class="fas fa-heart" aria-hidden="true" style="color: #EC407A;"></i><%= post.likes.count %></td>
+            <td><i class="fas fa-comment-alt" style="color: #007bff;"><%= post.post_comments.count %></i></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  </div>
+</div>
