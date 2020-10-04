@@ -1,4 +1,5 @@
 class EndUsers::PostsController < ApplicationController
+  before_action :authenticate_end_user!, except: [:index]
   before_action :ensure_post, only: [:show, :edit, :update, :destroy]
 
   def index
