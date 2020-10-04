@@ -7,5 +7,8 @@ class Post < ApplicationRecord
 
   validates :title, presence: true
   validates :contents, presence: true
-  validates :mark, presence: true
+
+  def liked_by?(end_user)
+    likes.where(end_user_id: end_user.id).exists?
+  end
 end
