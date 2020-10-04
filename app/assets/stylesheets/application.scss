@@ -241,3 +241,32 @@ nav ul {
   border-color: #ffdb88 #fff #ffdb88;
   box-shadow: -1px 1px 1px rgba( 0, 0, 0, 0.15);
 }
+//コメント詳細画面
+.post-comment-area {
+  margin: 50px 0;
+  position: relative;
+  background-color: #fdfcfa;
+  box-shadow: 0px 0px 0px 5px #fdfcfa;
+  border: dashed 2px #ecec17;
+  padding: 0.2em 0.5em;
+  color: #454545;
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  .post_comment_end_user_name {
+    color: #454545;
+    text-decoration: none;
+    padding: 0 10px;
+  }
+}
+.post-comment-area:after {
+  position: absolute;
+  content: '';
+  right: -7px;
+  top: -7px;
+  border-width: 0 15px 15px 0;
+  border-style: solid;
+  border-color: #fff8e8 #fff #fff8e8;
+  box-shadow: -1px 1px 1px rgba( 0, 0, 0, 0.15);
+}
