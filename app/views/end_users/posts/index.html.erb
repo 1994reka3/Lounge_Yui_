@@ -15,10 +15,12 @@
           <p><%= post.created_at.strftime('%Y/%m/%d') %></p>
         </div>
         <div class="col-md-2 pt-2">
-          <p>14</p>
+          <i class="fas fa-heart" aria-hidden="true" style="color: #EC407A;"></i>
+          <%= post.likes.count %>
         </div>
         <div class="col-md-2 pt-2">
-          <p>2</p>
+          <i class="fas fa-comment-alt" style="color: #007bff;"></i>
+          <%= post.post_comments.count %>
         </div>
         <div class="col-md-12 pt-2">
           <%= link_to post_path(post) do %>
