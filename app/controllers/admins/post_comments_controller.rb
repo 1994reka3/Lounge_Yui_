@@ -3,6 +3,7 @@ class Admins::PostCommentsController < ApplicationController
 
   def destroy
     PostComment.find_by(id: params[:id], post_id: params[:post_id]).destroy
+    flash[:success] = "削除しました"
     redirect_to admins_post_path(params[:post_id])
   end
 

@@ -18,6 +18,8 @@
 //= require turbolinks
 //= require jquery3
 //= require_tree .
+
+// コメントするボタン押したらフォームが表示される
 $(document).on('turbolinks:load', function () {
   $(function () {
     $('#comment-btn').on('click', () => {
@@ -25,9 +27,15 @@ $(document).on('turbolinks:load', function () {
     });
   });
 });
-
+// 管理者側投稿一覧の行全体クリックしたらshowへ飛ぶ
 $(document).on('turbolinks:load', function () {
   $(".post-clickable").click(function() {
+    location.href = $(this).data("link");
+  });
+});
+// 管理者側講座一覧の行全体クリックしたらshowへ飛ぶ
+$(document).on('turbolinks:load', function () {
+  $(".health-course-clickable").click(function() {
     location.href = $(this).data("link");
   });
 });
