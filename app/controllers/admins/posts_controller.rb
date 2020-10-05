@@ -10,6 +10,12 @@ class Admins::PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to admins_posts_path
+  end
+
+  def check
   end
 
 end
