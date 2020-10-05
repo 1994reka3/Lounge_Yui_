@@ -1,4 +1,9 @@
-<div class="row justify-content-center">
+<div class="row">
+  <div class="col-md-3">
+    投稿未確認件数　5件
+    <!-- 投稿コメント未確認件数 -->
+  </div>
+  <!-- 講座詳細 -->
   <div class="col-md-8">
     <div class="row">
       <h3><%= @health_course.title %></h3>
@@ -15,16 +20,5 @@
     <div class="row">
       <p>詳細については<strong><%= link_to "こちら", @health_course.site %></strong>をクリックしてください。（情報元のサイトへとびます）</p>
     </div>
-    <!-- 編集・削除ボタン -->
-    <% if admin_signed_in? %>
-      <div class="row justify-content-end">
-        <div class="col-md-2">
-          <p><%= link_to "編集", edit_admins_health_course_path(@health_course), class: "btn btn-outline-info btn-sm"%></p>
-        </div>
-        <div class="col-md-2">
-          <p><%= link_to "削除", admins_health_course_path(@health_course), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger btn-sm" %></p>
-        </div>
-      </div>
-    <% end %>
   </div>
 </div>
