@@ -43,6 +43,7 @@ class EndUsers::PostsController < ApplicationController
 
   def destroy
     @post.destroy
+    flash[:success] = "削除しました"
     redirect_to posts_path
   end
 

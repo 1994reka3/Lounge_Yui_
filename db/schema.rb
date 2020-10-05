@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_02_163520) do
+ActiveRecord::Schema.define(version: 2020_10_05_160530) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -58,10 +58,10 @@ ActiveRecord::Schema.define(version: 2020_10_02_163520) do
     t.string "title", null: false
     t.text "contents", null: false
     t.integer "location", default: 0, null: false
-    t.date "date", null: false
     t.string "site", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "date", null: false
   end
 
   create_table "likes", force: :cascade do |t|
