@@ -51,10 +51,10 @@
       <!-- 削除ボタン表示 -->
       <% if admin_signed_in? %>
         <div class="col-md-3 mt-3">
-          <p><%= link_to "確認済み", edit_post_path(@post), class: "btn btn-outline-info btn-lg"%></p>
+          <p><%= link_to "確認済み", admins_posts_check_path(@post), class: "btn btn-outline-info btn-lg"%></p>
         </div>
         <div class="col-md-1 mr-1 mt-4">
-          <p><%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger btn-sm" %></p>
+          <p><%= link_to "削除", admins_post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger btn-sm" %></p>
         </div>
       <% end %>
     <!-- コメント表示 -->
@@ -74,10 +74,10 @@
             </div>
             <div class="col-md-12"><%= post_comment.comment %></div>
             <div class="col-md-6">
-              <%= link_to "確認済み",post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-outline-info btn-lg" %>
+              <%= link_to "確認済み",admins_post_comments_check_path(post_comment.post, post_comment), method: :delete, class: "btn btn-outline-info btn-lg" %>
             </div>
             <div class="col-md-6">
-              <%= link_to "削除",post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-outline-danger btn-sm", "data-confirm" => "本当に削除しますか？" %>
+              <%= link_to "削除",admins_post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-outline-danger btn-sm", "data-confirm" => "本当に削除しますか？" %>
             </div>
           </div>
         </li>
