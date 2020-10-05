@@ -3,7 +3,7 @@ class EndUsers::PostsController < ApplicationController
   before_action :ensure_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.all
+    @posts = Post.all.order(id: "DESC")
   end
 
   def show
