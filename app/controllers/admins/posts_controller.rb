@@ -2,7 +2,7 @@ class Admins::PostsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @posts = Post.all
+    @posts = Post.all.order(id: "DESC")
   end
 
   def show
