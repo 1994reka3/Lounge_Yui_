@@ -22,9 +22,9 @@
       <div id="like-ajax-heart-<%= @post.id %>" class="col-md-1" style="padding: 0;">
         <%= render partial: "end_users/posts/like-heart", locals: {post: @post} %>
       </div>
-      <!-- コメント数 -->
-      <div class="col-md-1" style="padding: 0;">
-        <i class="fas fa-comment-alt" style="color: #007bff;"></i>  <%= @post.post_comments.count %>
+      <!-- コメント数 非同期 -->
+      <div id="comment_count" class="col-md-1" style="padding: 0;">
+        <%= render partial: "end_users/post_comments/comment_count", locals: {post: @post} %>
       </div>
       <div class="row">
         <p class="post-title"><%= @post.title %></p>
@@ -48,49 +48,26 @@
       <!-- 詳細下部 -->
       <div class="col-md-12 d-flex justify-content-around post-footer">
         <!-- いいねボタン非同期 -->
-        <div id="like-ajax-btn-<%= @post.id %>" class="d-flex align-items-center">
-          <%= render partial: "end_users/posts/like-btn", locals: {post: @post} %>
-        </div>
-        <div class="d-flex align-items-center">
-          <!-- コメントボタン　フォーム表示・非表示切り替え -->
-          <button id="comment-btn" class="comment-btn">コメントする</button>
-        </div>
+        <% if end_user_signed_in? %>
+          <div id="like-ajax-btn-<%= @post.id %>" class="d-flex align-items-center">
+            <%= render partial: "end_users/posts/like-btn", locals: {post: @post} %>
+          </div>
+        <% end %>
+        <!-- コメントボタン　フォーム表示・非表示切り替え -->
+        <% if end_user_signed_in? %>
+          <div class="d-flex align-items-center">
+            <button id="comment-btn" class="comment-btn">コメントする</button>
+          </div>
+        <% end %>
       </div>
       <div id="new-comment" class="form-group col-md-12 pt-4" style="display: none">
-        <%= form_with(model: [@post, @post_comment]) do |f| %>
-          <div class="row">
-            <%= f.text_area :comment, rows: "5", class: "form-control", placeholder: "コメントはこちら" %>
-          </div>
-          <div class="row justify-content-center pt-4">
-            <%= f.submit "投稿する", class: "btn btn-outline-primary" %>
-          </div>
-        <% end %>
+        <%= render partial: "end_users/post_comments/comment_form", locals: {post: @post, post_comment: @post_comment} %>
       </div>
     </div>
-    <!-- コメント表示 -->
-    <% @post.post_comments.each do |post_comment| %>
-      <div class="row post-comment-area">
-        <div class="col-md-2 pt-1">
-          <p>ID: <%= post_comment.id %></p>
-        </div>
-        <div class="col-md-6 pt-1">
-          <%= link_to end_user_path(post_comment.end_user) do %>
-            <p class="post_comment_end_user_name">
-              <%= post_comment.end_user.name %><small> さん</small>
-            </p>
-          <% end %>
-        </div>
-        <div class="col-md-4 pt-1">
-          <%= post_comment.created_at.strftime('%Y/%m/%d') %>
-        </div>
-        <div class="col-md-12"><%= post_comment.comment %></div>
-        <% if end_user_signed_in? && post_comment.end_user == current_end_user %>
-          <div class="col-md-2 offset-md-10">
-            <%= link_to "削除",post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-outline-danger btn-sm", "data-confirm" => "本当に削除しますか？" %>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
+    <!-- コメント表示非同期 -->
+    <div id="comment-ajax-area">
+      <%= render partial: "end_users/post_comments/comment_area", locals: {post: @post} %>
+    </div>
   </div>
   <!-- 新規投稿、管理人からのお願い -->
   <div class="col-md-3">

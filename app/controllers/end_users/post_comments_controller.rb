@@ -6,17 +6,14 @@ class EndUsers::PostCommentsController < ApplicationController
     @comment = current_end_user.post_comments.new(post_comment_params)
     @comment.post_id = @post.id
     if @comment.save
-      flash[:success] = "コメントしました"
-      redirect_to post_path(@post)
     else
       render 'posts/show'
     end
   end
 
   def destroy
+    @post = Post.find(params[:post_id])
     PostComment.find_by(id: params[:id], post_id: params[:post_id]).destroy
-    flash[:success] = "削除しました"
-    redirect_to post_path(params[:post_id])
   end
 
   private
