@@ -1,0 +1,2 @@
+$('#like-ajax-btn-<%= @post.id %>').html("<%= j(render partial: 'end_users/posts/like-btn', locals: {post: @post}) %>");
+$('#like-ajax-heart-<%= @post.id %>').html("<%= j(render partial: 'end_users/posts/like-heart', locals: {post: @post}) %>");

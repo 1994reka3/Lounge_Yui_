@@ -1,2 +1,59 @@
-<h1>Admins::EndUsers#show</h1>
-<p>Find me in app/views/admins/end_users/show.html.erb</p>
+<!-- ユーザー情報 -->
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="row">
+      <h2>ユーザー情報</h2>
+    </div>
+    <!-- ユーザー詳細 -->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="row">
+          <p>ユーザー名：<%= @end_user.name %></p>
+        </div>
+        <div class="row">
+          <p>生年月日：<%= @end_user.birthday.strftime('%Y年%m月%d日') %></p>
+        </div>
+        <div class="row">
+          <p>郵便番号：〒 <%= @end_user.postal_code %></p>
+        </div>
+        <div class="row">
+          <p>メールアドレス：<%= @end_user.email %></p>
+        </div>
+      </div>
+      <!-- プロフィール画像 -->
+      <div class="col-md-6">
+        <%= attachment_image_tag @end_user, :image, size:"250x250", format: 'jpeg', fallback: "no_image.png" %>
+      </div>
+    </div>
+    <!-- ユーザー別投稿一覧 -->
+    <div class="row">
+      <h2 class="text-center"><%= @end_user.name %> さんの投稿一覧</h2>
+      <% @posts.each do |post| %>
+        <div class="row post-index">
+          <div class="pt-2 post-genre-tag">
+            <p><%= post.genre.name %></p>
+          </div>
+          <div class="col-md-4 pt-2">
+            <p><%= post.created_at.strftime('%Y/%m/%d') %></p>
+          </div>
+          <div class="col-md-2 pt-2">
+            <i class="fas fa-heart" aria-hidden="true" style="color: #EC407A;"></i>
+            <%= post.likes.count %>
+          </div>
+          <div class="col-md-2 pt-2">
+            <i class="fas fa-comment-alt" style="color: #007bff;"></i>
+            <%= post.post_comments.count %>
+          </div>
+          <div class="col-md-12 pt-2">
+            <%= link_to post_path(post) do %>
+              <p class="post-title"><%= post.title %></p>
+            <% end %>
+          </div>
+          <div class="col-md-12 post-contents-area">
+            <p><%= post.contents %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
