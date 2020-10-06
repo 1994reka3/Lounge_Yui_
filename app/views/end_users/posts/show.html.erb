@@ -71,7 +71,13 @@
   </div>
   <!-- 新規投稿、管理人からのお願い -->
   <div class="col-md-3">
-    <%= link_to "記事投稿はこちら", new_post_path %>
-    <p>ご利用上の注意</p>
+    <div class="row new-post-link">
+      <%= link_to new_post_path, class: "btn btn-outline-primary btn-lg btn-block" do %>
+        投稿する<i class="fas fa-pencil-alt"></i>
+      <% end %>
+    </div>
+    <div class="row">
+      <p>ご利用上の注意</p>
+    </div>
   </div>
 </div>
