@@ -13,4 +13,6 @@ class EndUser < ApplicationRecord
   validates :postal_code, presence: true
   validates :email, presence: true, uniqueness: true
   validates :encrypted_password, presence: true
+
+  attachment :image
 end

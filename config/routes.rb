@@ -6,12 +6,13 @@ Rails.application.routes.draw do
 
   namespace :admins do
     get 'top' => 'homes#top', as: 'top'
-    post 'posts/check' => 'posts#check', as: 'posts_check'
-    post 'post_comments/check' => 'post_comments#check', as: 'post_comments_check'
     resources :health_courses
     resources :end_users, only: %i[index show]
     resources :posts, only: %i[index show destroy] do
-      resources :post_comments, only: [:destroy]
+      patch 'check' => 'posts#check', as: 'posts_check'
+      resources :post_comments, only: [:destroy] do
+        patch 'check' => 'post_comments#check', as: 'comments_check'
+      end
     end
   end
 

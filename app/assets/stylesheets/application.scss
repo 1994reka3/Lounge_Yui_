@@ -183,6 +183,16 @@ nav ul {
     padding: 0 10px;
     font-size: 25px;
   }
+  .post-genre-tag {
+    background-color: orange;
+    padding: 8px;
+    border: 1px solid #ff8100;
+    border-radius: 10px;
+    p {
+      font-size: 13px;
+      text-align: center;
+    }
+  }
 }
 .post-index:after {
   position: absolute;
@@ -194,6 +204,7 @@ nav ul {
   border-color: #ffdb88 #fff #ffdb88;
   box-shadow: -1px 1px 1px rgba( 0, 0, 0, 0.15);
 }
+
 
 //ユーザー投稿詳細画面
 .post-area {
@@ -210,7 +221,8 @@ nav ul {
   }
   .post-title {
     color: #454545;
-    padding: 0 10px;
+    padding-top: 10px;
+    padding-left: 20px;
     font-size: 25px;
   }
   .end_user_name {
@@ -231,6 +243,16 @@ nav ul {
     margin: 0;
     .like-btn {
       text-decoration: none;
+    }
+  }
+  .post-genre-tag {
+    background-color: orange;
+    padding: 4px;
+    border: 1px solid #ff8100;
+    border-radius: 10px;
+    p {
+      font-size: 13px;
+      text-align: center;
     }
   }
 }

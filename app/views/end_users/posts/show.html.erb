@@ -7,50 +7,44 @@
   <div class="col-md-6">
     <div class="row post-area">
       <!-- 詳細上部 -->
-      <div class="col-md-12 post-header">
-        <div class="row post-header-top">
-          <div class="col-md-2 pt-2 pl-4">
-            <p><%= @post.genre.name %></p>
-          </div>
-          <div class="col-md-6 pt-2">
-            <p class="post-title"><%= @post.title %></p>
-          </div>
-          <!-- いいね数 -->
-          <div class="col-md-2 pt-2">
-            <% if @post.liked_by?(current_end_user) %>
-              <i class="fas fa-heart" aria-hidden="true" style="color: #EC407A;"></i>
-              <%= @post.likes.count %>
-            <% else %>
-              <i class="far fa-heart" aria-hidden="true"></i>
-              <%= @post.likes.count %>
-            <% end %>
-          </div>
-          <!-- コメント数 -->
-          <div class="col-md-2 pt-2">
-            <i class="fas fa-comment-alt" style="color: #007bff;"></i>  <%= @post.post_comments.count %>
-          </div>
-        </div>
-        <div class="row post-header-bottom">
-          <div class="col-md-7 pt-1">
-            <%= link_to end_user_path(@post.end_user) do %>
-              <p class="end_user_name">投稿者：<%= @post.end_user.name %><small> さん</small></p>
-            <% end %>
-          </div>
-          <div class="col-md-5 pt-1">
-            <p>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
-          </div>
-        </div>
+      <div class="col-md-2 post-genre-tag">
+        <p><%= @post.genre.name %></p>
+      </div>
+      <div class="col-md-4">
+        <%= link_to end_user_path(@post.end_user) do %>
+          <p class="end_user_name"><%= @post.end_user.name %><small> さん</small></p>
+        <% end %>
+      </div>
+      <div class="col-md-4">
+        <p><%= @post.created_at.strftime('%Y/%m/%d') %></p>
+      </div>
+      <!-- いいね数 -->
+      <div class="col-md-1" style="padding: 0;">
+        <% if @post.liked_by?(current_end_user) %>
+          <i class="fas fa-heart" aria-hidden="true" style="color: #EC407A;"></i>
+          <%= @post.likes.count %>
+        <% else %>
+          <i class="far fa-heart" aria-hidden="true"></i>
+          <%= @post.likes.count %>
+        <% end %>
+      </div>
+      <!-- コメント数 -->
+      <div class="col-md-1" style="padding: 0;">
+        <i class="fas fa-comment-alt" style="color: #007bff;"></i>  <%= @post.post_comments.count %>
+      </div>
+      <div class="row">
+        <p class="post-title"><%= @post.title %></p>
       </div>
       <!-- 詳細メイン -->
-      <div class="col-md-12 post-body-main">
+      <div class="row post-body-main">
         <p><%= @post.contents %></p>
       </div>
-      <div class="col-md-7 mb-1 post-body-sub">
+      <div class="row post-body-sub">
         <p>診療科：<%= @post.department.name %></p>
       </div>
       <!-- 投稿したユーザーだったら編集・削除ボタン表示 -->
       <% if current_end_user == @end_user %>
-        <div class="col-md-2 mt-3">
+        <div class="col-md-2 mt-3 offset-md-3">
           <p><%= link_to "編集する", edit_post_path(@post), class: "btn btn-outline-info btn-sm"%></p>
         </div>
         <div class="col-md-2 mr-1 mt-3">
@@ -86,32 +80,30 @@
       </div>
     </div>
     <!-- コメント表示 -->
-    <ol>
-      <% @post.post_comments.each do |post_comment| %>
-        <li>
-          <div class="row post-comment-area">
-            <div class="col-md-7 pt-1">
-              <%= link_to end_user_path(post_comment.end_user) do %>
-                <p class="post_comment_end_user_name">
-                  投稿者：<%= post_comment.end_user.name %><small> さん</small>
-                </p>
-              <% end %>
-            </div>
-            <div class="col-md-5 pt-1">
-              投稿日：<%= post_comment.created_at.strftime('%Y/%m/%d') %>
-            </div>
-            <div class="col-md-12"><%= post_comment.comment %></div>
-            <% if end_user_signed_in? && post_comment.end_user == current_end_user %>
-              <div class="col-md-11 text-right">
-                <%= link_to "削除",post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-outline-danger btn-sm", "data-confirm" => "本当に削除しますか？" %>
-              </div>
-            <% end %>
+    <% @post.post_comments.each do |post_comment| %>
+      <div class="row post-comment-area">
+        <div class="col-md-2 pt-1">
+          <p>ID: <%= post_comment.id %></p>
+        </div>
+        <div class="col-md-6 pt-1">
+          <%= link_to end_user_path(post_comment.end_user) do %>
+            <p class="post_comment_end_user_name">
+              <%= post_comment.end_user.name %><small> さん</small>
+            </p>
+          <% end %>
+        </div>
+        <div class="col-md-4 pt-1">
+          <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+        </div>
+        <div class="col-md-12"><%= post_comment.comment %></div>
+        <% if end_user_signed_in? && post_comment.end_user == current_end_user %>
+          <div class="col-md-2 offset-md-10">
+            <%= link_to "削除",post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-outline-danger btn-sm", "data-confirm" => "本当に削除しますか？" %>
           </div>
-        </li>
-      <% end %>
-    </ol>
+        <% end %>
+      </div>
+    <% end %>
   </div>
-
   <!-- 新規投稿、管理人からのお願い -->
   <div class="col-md-3">
     <%= link_to "記事投稿はこちら", new_post_path %>
