@@ -39,3 +39,9 @@ $(document).on('turbolinks:load', function () {
     location.href = $(this).data("link");
   });
 });
+// 管理者側ユーザー一覧の行全体クリックしたらshowへ飛ぶ
+$(document).on('turbolinks:load', function () {
+  $(".end_user-clickable").click(function() {
+    location.href = $(this).data("link");
+  });
+});
