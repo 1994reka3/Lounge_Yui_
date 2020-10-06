@@ -1,0 +1,7 @@
+<% if post.liked_by?(current_end_user) %>
+  <i class="fas fa-heart" aria-hidden="true" style="color: #EC407A;"></i>
+  <%= post.likes.count %>
+<% else %>
+  <i class="far fa-heart" aria-hidden="true"></i>
+  <%= post.likes.count %>
+<% end %>
