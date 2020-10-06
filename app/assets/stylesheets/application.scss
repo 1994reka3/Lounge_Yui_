@@ -132,6 +132,13 @@ nav ul {
 
 
 //ユーザー新規登録画面
+.new-post-link {
+  margin: 50px 0;
+  height: 80px;
+  a {
+    line-height: 80px;
+  }
+}
 .post-announcement {
   margin: 2em 0;
   background: #dcefff;
