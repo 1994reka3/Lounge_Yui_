@@ -2,7 +2,7 @@ class Admins::EndUsersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @end_users = EndUser.all.order(id: "DESC")
+    @end_users = EndUser.page(params[:page]).reverse_order
   end
 
   def show

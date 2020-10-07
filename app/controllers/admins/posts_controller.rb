@@ -3,7 +3,15 @@ class Admins::PostsController < ApplicationController
   before_action :ensure_post, only: [:show, :destroy]
 
   def index
-    @posts = Post.all.order(id: "DESC")
+    case params[:uncheck]
+    when "posts"
+      @posts = Post.where(mark: false).page(params[:page]).reverse_order
+    when "post_comments"
+      @post_comments = PostComment.where(mark: false)
+      @posts = @post_comments.post.page(params[:page]).reverse_order
+    else
+      @posts = Post.page(params[:page]).reverse_order
+    end
   end
 
   def show
