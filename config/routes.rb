@@ -10,8 +10,10 @@ Rails.application.routes.draw do
     resources :end_users, only: %i[index show]
     resources :posts, only: %i[index show destroy] do
       patch 'check' => 'posts#check', as: 'posts_check'
+      patch 'uncheck' => 'posts#uncheck', as: 'posts_uncheck'
       resources :post_comments, only: [:destroy] do
         patch 'check' => 'post_comments#check', as: 'comments_check'
+        patch 'uncheck' => 'post_comments#uncheck',as: 'comments_uncheck'
       end
     end
   end

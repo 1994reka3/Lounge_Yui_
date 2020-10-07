@@ -1,6 +1,6 @@
 class Admins::PostsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :ensure_post, only: [:show, :destroy, :check]
+  before_action :ensure_post, only: [:show, :destroy]
 
   def index
     @posts = Post.all.order(id: "DESC")
@@ -16,13 +16,19 @@ class Admins::PostsController < ApplicationController
   end
 
   def check
+    @post = Post.find(params[:post_id])
     @post.update(mark: true)
+  end
+
+  def uncheck
+    @post = Post.find(params[:post_id])
+    @post.update(mark: false)
   end
 
   private
 
   def ensure_post
-    @post = Post.find(params[:id])
+    @post =  Post.find(params[:id])
   end
 
 end
