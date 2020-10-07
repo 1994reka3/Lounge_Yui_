@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :end_users do
-    get 'departments/show'
-  end
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'
   }
@@ -28,6 +25,7 @@ Rails.application.routes.draw do
   scope module: :end_users do
     root 'homes#top'
     get 'about' => 'homes#about'
+    get 'search' => 'search#index'
     resources :posts do
       resources :post_comments, only: %i[create destroy]
       resource :likes, only: %i[create destroy]
