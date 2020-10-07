@@ -25,12 +25,14 @@ Rails.application.routes.draw do
   scope module: :end_users do
     root 'homes#top'
     get 'about' => 'homes#about'
+    get 'search' => 'search#index'
     resources :posts do
       resources :post_comments, only: %i[create destroy]
       resource :likes, only: %i[create destroy]
     end
     resources :end_users, only: %i[show edit update]
     resources :health_courses, only: %i[index show]
+    resources :departments, only: [:show]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

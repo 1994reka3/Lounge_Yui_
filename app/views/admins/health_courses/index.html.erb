@@ -29,7 +29,11 @@
   </div>
   <!-- 講座　新規登録リンク -->
   <div class="col-md-2">
-    <p><%= link_to "講座情報を登録する", new_admins_health_course_path %></p>
+    <div class="row new-post-link">
+      <%= link_to new_admins_health_course_path, class: "btn btn-outline-primary btn-lg btn-block" do %>
+        講座登録<i class="fas fa-pencil-alt"></i>
+      <% end %>
+    </div>
   </div>
 </div>
 
