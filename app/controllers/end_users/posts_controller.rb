@@ -4,6 +4,7 @@ class EndUsers::PostsController < ApplicationController
 
   def index
     @posts = Post.all.order(id: "DESC")
+    @parents = Department.where(ancestry: nil)
   end
 
   def show
