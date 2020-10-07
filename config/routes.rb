@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :end_users do
+    get 'departments/show'
+  end
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'
   }
@@ -31,6 +34,7 @@ Rails.application.routes.draw do
     end
     resources :end_users, only: %i[show edit update]
     resources :health_courses, only: %i[index show]
+    resources :departments, only: [:show]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
