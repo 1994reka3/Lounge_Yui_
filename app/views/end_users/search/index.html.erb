@@ -15,7 +15,9 @@
   </div>
   <!-- 投稿情報 -->
   <div class="col-md-6">
-    <h2 class="text-center"><%= @search %> 投稿一覧</h2>
+    <% if params[:q].present? && params[:q][:title_or_contents_cont].present? %>
+      <h2 class="text-center">” <%= params[:q][:title_or_contents_cont] %> ”を含む投稿一覧</h2>
+    <% end %>
     <p class="text-center">タイトルクリックで詳細が見れます</p>
     <% @posts.each do |post| %>
       <div class="row post-index">

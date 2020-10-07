@@ -1,9 +1,17 @@
 class Admins::PostsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :ensure_post, only: [:show, :destroy, :check]
+  before_action :ensure_post, only: [:show, :destroy]
 
   def index
-    @posts = Post.all.order(id: "DESC")
+    case params[:uncheck]
+    when "posts"
+      @posts = Post.where(mark: false).page(params[:page]).reverse_order
+    when "post_comments"
+      @post_comments = PostComment.where(mark: false)
+      @posts = @post_comments.post.page(params[:page]).reverse_order
+    else
+      @posts = Post.page(params[:page]).reverse_order
+    end
   end
 
   def show
@@ -16,13 +24,19 @@ class Admins::PostsController < ApplicationController
   end
 
   def check
+    @post = Post.find(params[:post_id])
     @post.update(mark: true)
+  end
+
+  def uncheck
+    @post = Post.find(params[:post_id])
+    @post.update(mark: false)
   end
 
   private
 
   def ensure_post
-    @post = Post.find(params[:id])
+    @post =  Post.find(params[:id])
   end
 
 end

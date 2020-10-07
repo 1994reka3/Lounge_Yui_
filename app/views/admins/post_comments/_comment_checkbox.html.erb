@@ -1,0 +1,9 @@
+<% if post_comment.mark == false %>
+  <%= link_to admins_post_post_comment_comments_check_path(post_comment.post, post_comment), method: :patch, remote: true do %>
+    <i class="far fa-check-square fa-2x" style="color: #7fd408"></i>
+  <% end %>
+<% else %>
+  <%= link_to admins_post_post_comment_comments_uncheck_path(post_comment.post, post_comment), method: :patch, remote: true do %>
+    <i class="fas fa-check-square fa-2x" style="color: #7fd408"></i>
+  <% end %>
+<% end %>

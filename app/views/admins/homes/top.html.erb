@@ -1,7 +1,15 @@
 <div class="row justify-content-center">
   <div class="col-md-4">
-    投稿未確認件数　5件
-    <!-- 投稿コメント未確認件数 -->
+    <div class="row">
+      <%= link_to admins_posts_path(uncheck: "posts"), class: "btn btn-outline-danger btn-lg" do %>
+        投稿未確認件数  <%= @posts.count %>件
+      <% end %>
+    </div>
+    <div class="row">
+        <%= link_to admins_posts_path(uncheck: "post_comments"), class: "btn btn-outline-danger btn-lg" do %>
+        コメント未確認件数  <%= @post_comments.count %>件
+      <% end %>
+    </div>
   </div>
   <div class="col-md-4">
     <div class="row new-post-link">

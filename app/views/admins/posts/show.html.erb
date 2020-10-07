@@ -6,11 +6,9 @@
   <!-- 投稿詳細 -->
   <div class="col-md-6">
     <div class="row post-area">
-      <!-- 確認チェックボックス -->
-      <div class="col-md-1" style="padding: 0;">
-        <%= link_to admins_post_posts_check_path(@post), method: :patch do %>
-          <i class="far fa-check-square fa-2x"></i>
-        <% end %>
+      <!-- 投稿確認チェックボックス -->
+      <div id="checkbox_<%= @post.id %>" class="col-md-1" style="padding: 0;">
+        <%= render partial: "post_checkbox", locals: { post: @post } %>
       </div>
       <!-- 投稿詳細エリア -->
       <div class="col-md-11" style="padding: 0;">
@@ -63,11 +61,9 @@
     <!-- コメントエリア -->
     <% @post.post_comments.each do |post_comment| %>
       <div class="row post-comment-area">
-        <!-- 確認チェックボックス -->
-        <div class="col-md-1" style="padding: 0;">
-          <%= link_to admins_post_post_comment_comments_check_path(post_comment.post, post_comment), method: :patch do %>
-            <i class="far fa-check-square fa-2x"></i>
-          <% end %>
+        <!-- コメント確認チェックボックス -->
+        <div id="comment_checkbox_<%= @post.id %><%= post_comment.id %>" class="col-md-1" style="padding: 0;">
+          <%= render partial: "admins/post_comments/comment_checkbox", locals: { post_comment: post_comment } %>
         </div>
         <!-- 投稿詳細エリア -->
         <div class="col-md-11" style="padding: 0;">
@@ -93,11 +89,5 @@
         </div>
       </div>
     <% end %>
-  </div>
-
-  <!-- 新規投稿、管理人からのお願い -->
-  <div class="col-md-3">
-    <%= link_to "記事投稿はこちら", new_post_path %>
-    <p>ご利用上の注意</p>
   </div>
 </div>
