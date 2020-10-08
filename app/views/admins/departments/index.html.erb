@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="row">
+      <h4>診療科追加</h4>
+    </div>
+    <!-- 診療科追加フォーム -->
+    <div class="row">
+      <%= form_with(url: admins_departments_path, local: true) do |f| %>
+        <%= f.text_field :name %>
+        <%= f.radio_button :is_valid, true, checked: "checked" %>
+        <%= f.label :有効 %>
+        <%= f.radio_button :is_valid, false %>
+        <%= f.label :無効 %>
+        <%= f.submit "登録" %>
+      <% end %>
+    </div>
+    <!-- 診療科一覧 -->
+    <h4>診療科一覧</h4>
+    <div class="row">
+      <% @departments.each do |department| %>
+        <div class="col-md-2"><%= department.id %></div>
+        <div class="col-md-6"><%= department.name %></div>
+        <div class="col-md-2">
+          <% if department.is_valid == true %>
+            <p>有効</p>
+          <% elsif department.is_valid == false %>
+            <p>無効</p>
+          <% end %>
+        </div>
+        <div class="col-md-2">
+          <%= link_to "編集する", edit_admins_department_path(department), class: "btn btn-outline-info btn-sm"%>
+        </div>
+      <% end %>
+    </div>
+    <div class="row justify-content-center">
+      <%= paginate @departments %>
+    </div>
+  </div>
+</div>

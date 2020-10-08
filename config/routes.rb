@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :admins do
+    get 'departments/index'
+    get 'departments/edit'
+  end
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'
   }
@@ -16,6 +20,7 @@ Rails.application.routes.draw do
         patch 'uncheck' => 'post_comments#uncheck',as: 'comments_uncheck'
       end
     end
+    resources :departments, only: [:index, :create, :edit, :update]
   end
 
   devise_for :end_users, controllers: {
