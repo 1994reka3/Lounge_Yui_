@@ -11,85 +11,87 @@
   </head>
 
   <body>
-    <header>
-      <!-- ユーザーがログインしたとき -->
-      <% if end_user_signed_in? %>
-        <div class="row  justify-content-center logo">
-          <p><%= link_to "Lounge 〜結〜", root_path %></p>
-        </div>
-        <div class="row justify-content-end login-btns">
-          <div class="col-md-4">
-            <div class="btn-flat-mypage">
-              <%= link_to "マイページ", end_user_path(current_end_user), class: "btns" %>
-            </div>
-            <div class="btn-flat-logout">
-              <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, class: "btns" %>
+    <div id="wrapper">
+      <header>
+        <!-- ユーザーがログインしたとき -->
+        <% if end_user_signed_in? %>
+          <div class="row  justify-content-center logo">
+            <%= link_to root_path do %><%= image_tag("logo.png") %><% end %>
+          </div>
+          <div class="row justify-content-end login-btns">
+            <div class="col-md-4">
+              <div class="btn-flat-mypage">
+                <%= link_to "マイページ", end_user_path(current_end_user), class: "btns" %>
+              </div>
+              <div class="btn-flat-logout">
+                <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, class: "btns" %>
+              </div>
             </div>
           </div>
-        </div>
-        <nav class="header-nav">
-          <ul>
-            <li><%= link_to "このサイトについて", about_path, class: "nav-list" %></li>
-            <li><%= link_to "投稿閲覧コーナー", posts_path, class: "nav-list" %></li>
-            <li><%= link_to "健康講座コーナー", health_courses_path, class: "nav-list" %></li>
-          </ul>
-        </nav>
-      <!-- 管理者でログインしたとき -->
-      <% elsif admin_signed_in? %>
-        <div class="row  justify-content-center logo">
-          <p><%= link_to "Lounge 〜結〜", admins_top_path %></p>
-        </div>
-        <div class="row justify-content-end login-btns">
-          <div class="col-md-4">
-            <div class="btn-flat-logout">
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btns" %>
+          <nav class="header-nav">
+            <ul>
+              <li><%= link_to "このサイトについて", about_path, class: "nav-list" %></li>
+              <li><%= link_to "投稿閲覧コーナー", posts_path, class: "nav-list" %></li>
+              <li><%= link_to "健康講座コーナー", health_courses_path, class: "nav-list" %></li>
+            </ul>
+          </nav>
+        <!-- 管理者でログインしたとき -->
+        <% elsif admin_signed_in? %>
+          <div class="row  justify-content-center logo">
+            <p><%= link_to "Lounge 〜結〜", admins_top_path %></p>
+          </div>
+          <div class="row justify-content-end login-btns">
+            <div class="col-md-4">
+              <div class="btn-flat-logout">
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btns" %>
+              </div>
             </div>
           </div>
-        </div>
-        <nav class="header-nav">
-          <ul>
-            <li><%= link_to "ユーザー一覧", admins_end_users_path, class: "nav-list" %></li>
-            <li><%= link_to "投稿一覧", admins_posts_path, class: "nav-list" %></li>
-            <li><%= link_to "講座一覧", admins_health_courses_path, class: "nav-list" %></li>
-          </ul>
-        </nav>
-      <!-- ログインしていないとき -->
-      <% else %>
-        <div class="row  justify-content-center logo">
-          <p><%= link_to "Lounge 〜結〜", root_path %></p>
-        </div>
-        <div class="row justify-content-end login-btns">
-          <div class="col-md-4">
-            <div class="btn-flat-new-registration">
-              <%= link_to "新規登録", new_end_user_registration_path, class: "btns" %>
-            </div>
-            <div class="btn-flat-new-session">
-              <%= link_to "ログイン", new_end_user_session_path, class: "btns" %>
+          <nav class="header-nav">
+            <ul>
+              <li><%= link_to "ユーザー一覧", admins_end_users_path, class: "nav-list" %></li>
+              <li><%= link_to "投稿一覧", admins_posts_path, class: "nav-list" %></li>
+              <li><%= link_to "講座一覧", admins_health_courses_path, class: "nav-list" %></li>
+            </ul>
+          </nav>
+        <!-- ログインしていないとき -->
+        <% else %>
+          <div class="row  justify-content-center logo">
+            <p><%= link_to "Lounge 〜結〜", root_path %></p>
+          </div>
+          <div class="row justify-content-end login-btns">
+            <div class="col-md-4">
+              <div class="btn-flat-new-registration">
+                <%= link_to "新規登録", new_end_user_registration_path, class: "btns" %>
+              </div>
+              <div class="btn-flat-new-session">
+                <%= link_to "ログイン", new_end_user_session_path, class: "btns" %>
+              </div>
             </div>
           </div>
-        </div>
-        <nav class="header-nav">
-          <ul>
-            <li><%= link_to "このサイトについて", about_path, class: "nav-list" %></li>
-            <li><%= link_to "投稿閲覧コーナー", posts_path, class: "nav-list" %></li>
-            <li><%= link_to "健康講座コーナー", health_courses_path, class: "nav-list" %></li>
-          </ul>
-        </nav>
-      <% end %>
-    </header>
-    <main>
-      <!-- フラッシュメッセージ -->
-      <div class="container">
-        <% if flash[:success] %>
-          <div class="alert alert-success alert-dismissible"><%= flash[:success] %></div>
-        <% elsif flash[:notice] %>
-          <div class="alert alert-info alert-dismissible"><%= flash[:notice] %></div>
+          <nav class="header-nav">
+            <ul>
+              <li><%= link_to "このサイトについて", about_path, class: "nav-list" %></li>
+              <li><%= link_to "投稿閲覧コーナー", posts_path, class: "nav-list" %></li>
+              <li><%= link_to "健康講座コーナー", health_courses_path, class: "nav-list" %></li>
+            </ul>
+          </nav>
         <% end %>
-        <%= yield %>
-      </div>
-    </main>
-    <footer>
-    </footer>
+      </header>
+      <main>
+        <!-- フラッシュメッセージ -->
+        <div class="container">
+          <% if flash[:success] %>
+            <div class="alert alert-success alert-dismissible"><%= flash[:success] %></div>
+          <% elsif flash[:notice] %>
+            <div class="alert alert-info alert-dismissible"><%= flash[:notice] %></div>
+          <% end %>
+          <%= yield %>
+        </div>
+      </main>
+      <footer>
+      </footer>
+    </div>
   </body>
 </html>
 

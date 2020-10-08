@@ -3,8 +3,13 @@ class EndUsers::PostsController < ApplicationController
   before_action :ensure_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.page(params[:page]).reverse_order
-    @parents = Department.where(ancestry: nil)
+    @departments = Department.all
+    if params[:name]
+      @department = Department.where(name: params[:name])
+      @posts = Post.find(department_id: @department.pluck(:department_id).uniq).page(params[:page]).reverse_order
+    else
+      @posts = Post.page(params[:page]).reverse_order
+    end
   end
 
   def show
@@ -14,6 +19,7 @@ class EndUsers::PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @departments = Department.all
   end
 
   def create

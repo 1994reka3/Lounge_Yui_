@@ -32,7 +32,7 @@
       <div class="row">
         <label class="col-md-2 col-form-label m-2 p-2">診療科</label>
         <div class="col-md-4 m-2 p-2">
-          <%= f.collection_select(:department_id, Department.all, :id, :name, { prompt: "選択してください" }, {class: "form-control"}) %>
+          <%= f.collection_select(:department_id, @departments, :id, :name, { prompt: "選択してください" }, {class: "form-control"}) %>
         </div>
       </div>
       <div class="row">

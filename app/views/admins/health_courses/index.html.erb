@@ -6,11 +6,10 @@
   <!-- 投稿一覧 -->
   <div class="col-md-8">
     <h2 class="text-center">講座情報一覧</h2>
-    <div class="row justify-content-center">
+    <div class="row">
       <table class="health-course-table">
         <thead>
           <tr>
-            <th>No.</th>
             <th>開催日</th>
             <th>タイトル</th>
           </tr>
@@ -18,15 +17,14 @@
         <tbody>
           <% @health_courses.each do |health_course| %>
             <tr class="health-course-clickable" data-link="<%= admins_health_course_path(health_course) %>">
-              <td><%= health_course.id %></td>
               <td><%= health_course.date.strftime("%Y年%m月%d日") %></td>
               <td><%= health_course.title %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
-      <%= paginate @health_courses %>
     </div>
+    <div class="row justify-content-center"><%= paginate @health_courses %></div>
   </div>
   <!-- 講座　新規登録リンク -->
   <div class="col-md-2">
