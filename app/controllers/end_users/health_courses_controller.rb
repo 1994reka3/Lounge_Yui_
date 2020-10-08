@@ -1,7 +1,11 @@
 class EndUsers::HealthCoursesController < ApplicationController
 
   def index
-    @health_courses = HealthCourse.all.order(id: "DESC")
+    if params[:location]
+      @health_courses = HealthCourse.where(location: params[:location])
+    else
+      @health_courses = HealthCourse.page(params[:page]).reverse_order
+    end
   end
 
   def show

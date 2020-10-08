@@ -1,7 +1,11 @@
 <div class="row">
   <!-- 検索系のサイドバー -->
   <div class="col-md-3">
-    <!-- 検索系のサイドバー予定 -->
+    <p>都道府県を選択</p>
+    <%= form_with(url: health_courses_path, method: :get, local: true) do |f| %>
+      <%= f.select :location, HealthCourse.locations.keys.to_a, class: "form-control", placeholder: "都道府県を選択" %>
+      <%= f.submit "検索" %>
+    <% end %>
   </div>
   <!-- 投稿一覧 -->
   <div class="col-md-8">
