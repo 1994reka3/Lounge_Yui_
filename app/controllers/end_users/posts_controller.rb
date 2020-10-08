@@ -5,8 +5,8 @@ class EndUsers::PostsController < ApplicationController
   def index
     @departments = Department.all
     if params[:name]
-      @department = Department.where(name: params[:name])
-      @posts = Post.find(department_id: @department.pluck(:department_id).uniq).page(params[:page]).reverse_order
+      @department = Department.where(id: params[:name])
+      @posts = Post.where(department_id: params[:name]).page(params[:page]).reverse_order
     else
       @posts = Post.page(params[:page]).reverse_order
     end
