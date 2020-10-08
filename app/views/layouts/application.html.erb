@@ -15,7 +15,7 @@
       <!-- ユーザーがログインしたとき -->
       <% if end_user_signed_in? %>
         <div class="row  justify-content-center logo">
-          <p><%= link_to "Lounge 〜結〜", posts_path %></p>
+          <p><%= link_to "Lounge 〜結〜", root_path %></p>
         </div>
         <div class="row justify-content-end login-btns">
           <div class="col-md-4">
@@ -27,7 +27,7 @@
             </div>
           </div>
         </div>
-        <nav>
+        <nav class="header-nav">
           <ul>
             <li><%= link_to "このサイトについて", about_path, class: "nav-list" %></li>
             <li><%= link_to "投稿閲覧コーナー", posts_path, class: "nav-list" %></li>
@@ -37,7 +37,7 @@
       <!-- 管理者でログインしたとき -->
       <% elsif admin_signed_in? %>
         <div class="row  justify-content-center logo">
-          <p><%= link_to "Lounge 〜結〜", posts_path %></p>
+          <p><%= link_to "Lounge 〜結〜", admins_top_path %></p>
         </div>
         <div class="row justify-content-end login-btns">
           <div class="col-md-4">
@@ -46,7 +46,7 @@
             </div>
           </div>
         </div>
-        <nav>
+        <nav class="header-nav">
           <ul>
             <li><%= link_to "ユーザー一覧", admins_end_users_path, class: "nav-list" %></li>
             <li><%= link_to "投稿一覧", admins_posts_path, class: "nav-list" %></li>
@@ -56,7 +56,7 @@
       <!-- ログインしていないとき -->
       <% else %>
         <div class="row  justify-content-center logo">
-          <p><%= link_to "Lounge 〜結〜", posts_path %></p>
+          <p><%= link_to "Lounge 〜結〜", root_path %></p>
         </div>
         <div class="row justify-content-end login-btns">
           <div class="col-md-4">
@@ -68,7 +68,7 @@
             </div>
           </div>
         </div>
-        <nav>
+        <nav class="header-nav">
           <ul>
             <li><%= link_to "このサイトについて", about_path, class: "nav-list" %></li>
             <li><%= link_to "投稿閲覧コーナー", posts_path, class: "nav-list" %></li>
