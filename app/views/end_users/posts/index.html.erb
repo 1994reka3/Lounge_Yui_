@@ -12,7 +12,7 @@
     <div class="row">
       <p>診療科検索</p>
       <%= form_with(url: posts_path, method: :get, local: true) do |f| %>
-       <%= f.select :name, Department.names.keys.to_a, class: "form-control", placeholder: "都道府県を選択" %>
+       <%= f.collection_select :name, @departments, :id, :name, {prompt: "--選択してください--"}, {class: "form-control", placeholder: "都道府県を選択"} %>
         <%= f.submit "検索" %>
       <% end %>
     </div>

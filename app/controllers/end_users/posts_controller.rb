@@ -3,6 +3,7 @@ class EndUsers::PostsController < ApplicationController
   before_action :ensure_post, only: [:show, :edit, :update, :destroy]
 
   def index
+    @departments = Department.all
     if params[:name]
       @department = Department.where(name: params[:name])
       @posts = Post.find(department_id: @department.pluck(:department_id).uniq).page(params[:page]).reverse_order

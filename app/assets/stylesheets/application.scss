@@ -17,6 +17,19 @@
 
 body {
   color: #555;
+  background-image: image-url("mizutama.jpg");
+  background-size: cover;
+  background-pisition: center;
+}
+
+//フッターの位置固定
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+footer {
+  margin-top: auto;
 }
 //ヘッダーのログイン関係ボタン
 .login-btns {
@@ -207,7 +220,7 @@ body {
   top: -7px;
   border-width: 0 15px 15px 0;
   border-style: solid;
-  border-color: #ffdb88 #fff #ffdb88;
+  border-color: #ffdb88 #fff8e8 #ffdb88;
   box-shadow: -1px 1px 1px rgba( 0, 0, 0, 0.15);
 }
 
@@ -269,7 +282,7 @@ body {
   top: -7px;
   border-width: 0 15px 15px 0;
   border-style: solid;
-  border-color: #ffdb88 #fff #ffdb88;
+  border-color: #ffdb88 #fff8e8 #ffdb88;
   box-shadow: -1px 1px 1px rgba( 0, 0, 0, 0.15);
 }
 //コメント詳細画面
