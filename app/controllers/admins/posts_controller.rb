@@ -8,7 +8,7 @@ class Admins::PostsController < ApplicationController
       @posts = Post.where(mark: false).page(params[:page]).reverse_order
     when "post_comments"
       @post_comments = PostComment.where(mark: false)
-      @posts = @post_comments.post.posts
+      @posts = Post.where(id: @post_comments.pluck(:post_id).uniq).page(params[:page]).reverse_order
     else
       @posts = Post.page(params[:page]).reverse_order
     end

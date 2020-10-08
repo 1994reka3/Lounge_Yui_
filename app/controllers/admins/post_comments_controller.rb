@@ -8,11 +8,13 @@ class Admins::PostCommentsController < ApplicationController
   end
 
   def check
+    @post = Post.find(params[:post_id])
     @post_comment = PostComment.find_by(post_id: params[:post_id], id: params[:post_comment_id])
     @post_comment.update(mark: true)
   end
 
   def uncheck
+    @post = Post.find(params[:post_id])
     @post_comment = PostComment.find_by(post_id: params[:post_id], id: params[:post_comment_id])
     @post_comment.update(mark: false)
   end
