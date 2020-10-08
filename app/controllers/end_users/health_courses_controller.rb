@@ -4,7 +4,7 @@ class EndUsers::HealthCoursesController < ApplicationController
     if params[:location]
       @health_courses = HealthCourse.where(location: params[:location])
     else
-      @health_courses = HealthCourse.page(params[:page]).reverse_order
+      @health_courses = HealthCourse.order(date: "DESC").page(params[:page]).per(10)
     end
   end
 

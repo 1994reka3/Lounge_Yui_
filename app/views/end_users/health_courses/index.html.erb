@@ -14,7 +14,6 @@
       <table class="health-course-table">
         <thead>
           <tr>
-            <th>No.</th>
             <th>開催日</th>
             <th>タイトル</th>
           </tr>
@@ -22,7 +21,6 @@
         <tbody>
           <% @health_courses.each do |health_course| %>
             <tr class="health-course-clickable" data-link="<%= health_course_path(health_course) %>">
-              <td><%= health_course.id %></td>
               <td><%= health_course.date.strftime("%Y年%m月%d日") %></td>
               <td><%= health_course.title %></td>
             </tr>
