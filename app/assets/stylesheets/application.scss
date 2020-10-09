@@ -14,12 +14,23 @@
  *= require_self
  */
 @import "bootstrap";
+@font-face {
+  font-family: "hanamin";
+  src: asset_url("HanaMinA.ttf") format("truetype"),
+       asset_url("HanaMinB.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 
 body {
   color: #555;
+  font-family: "hanamin", "ヒラギノ明朝 ProN","Hiragino Mincho ProN","ＭＳ 明朝", "MS Mincho",sans-serif;
   background-image: image-url("mizutama.jpg");
   background-size: cover;
   background-pisition: center;
+  .container {
+    background-color: rgba(255,255,255,0.8);
+  }
 }
 
 //フッターの位置固定
@@ -172,6 +183,31 @@ footer {
   }
   ul {
     margin: 0 auto;
+  }
+}
+.index-heading {
+  padding: 0.5rem 1rem;
+  border-bottom: 3px solid #871c40;
+  text-align: center;
+  width: 70%;
+  margin: 0 auto;
+  font-weight: bold;
+}
+//検索コーナー
+.search_box {
+  background-color: #871c40;
+  padding: 2em;
+  p {
+    font-size: 1.2em;
+    padding: 5px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid #fff;
+  }
+  div {
+    padding: 20px 0;
   }
 }
 

@@ -1,7 +1,8 @@
 <div class="row">
-  <!-- 検索系のサイドバー -->
-  <div class="col-md-3">
-    <!-- 検索系のサイドバー予定 -->
+  <!-- 検索　部分テンプレート -->
+  <div class="col-md-3 search_box">
+    <p>検索コーナー</p>
+    <%= render partial: "search", locals: {search: @search, departments: @departments, genres: @genres} %>
   </div>
   <!-- 投稿詳細 -->
   <div class="col-md-6">

@@ -1,0 +1,21 @@
+<!-- キーワード検索 -->
+<div class="row form-inline">
+  <%= search_form_for(search, url: search_path) do |f| %>
+    <%= f.search_field :title_or_contents_cont, class: "form-control col-md-9", placeholder: "キーワード検索" %>
+    <%= f.submit "検索", class: "btn btn-warning btn-sm" %>
+  <% end %>
+</div>
+<!-- 診療科別検索 -->
+<div class="row form-inline">
+  <%= form_with(url: posts_path, method: :get, local: true) do |f| %>
+    <%= f.collection_select :name, departments, :id, :name, {prompt: "診療科検索"}, {class: "form-control"} %>
+    <%= f.submit "検索", class: "btn btn-warning btn-sm" %>
+  <% end %>
+ </div>
+<!-- ジャンル検索 -->
+<div class="row form-inline">
+  <%= form_with(url: posts_path, method: :get, local: true) do |f| %>
+   <%= f.collection_select :genre_id, genres, :id, :name, {prompt: "ジャンル検索"}, {class: "form-control"} %>
+    <%= f.submit "検索", class: "btn btn-warning btn-sm" %>
+  <% end %>
+</div>
