@@ -17,11 +17,53 @@
 
 body {
   color: #555;
-  background-image: image-url("mizutama.jpg");
+  font-family: 'ヒラギノ丸ゴ ProN','Hiragino Maru Gothic ProN','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',YuGothic,'Yu Gothic',sans-serif;
+  background-image: image-url("1121380.jpg");
   background-size: cover;
   background-pisition: center;
+  .container {
+    background-color: rgba(255,255,255,0.8);
+  }
 }
-
+//トップページ
+.top-visual {
+  background-image: image-url("top.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 60%;
+  height: 500px;
+  margin: 0 auto;
+  position: relative;
+  .top-headline {
+    padding: 110px;
+    positiion: absolute;
+  }
+}
+.top-contents {
+  margin: 50px auto;
+  padding-top: 50px;
+  text-align: center;
+  h4 {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #555;
+  }
+}
+.rule {
+  background-image: image-url("617127.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 80%;
+  height: 500px;
+  margin: 0 auto;
+  .rule-text {
+    margin: 70px auto;
+    h4 {
+      text-align: center;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #555;
+    }
+  }
+}
 //フッターの位置固定
 #wrapper {
   display: flex;
@@ -30,115 +72,15 @@ body {
 }
 footer {
   margin-top: auto;
+  height: 50px;
+  background-color: #000;
 }
-//ヘッダーのログイン関係ボタン
-.login-btns {
-  .btns {
+//ナビバー
+.nav-item {
+  padding: 10px;
+  font-size: 17px;
+  a:hover {
     text-decoration: none;
-    color: #555;
-  }
-  .btns:hover {
-    color: #fff;
-  }
-}
-.btn-flat-mypage {
-  position: relative;
-  display: table-cell;
-  font-weight: bold;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  border-bottom: solid 4px #ff7d6e;
-  color: #FC964B;
-  transition: .4s;
-  width: 50%;
-  text-align: center;
-}
-.btn-flat-mypage:hover {
-  background-color: #ff7d6e;
-  color: #FFF;
-}
-.btn-flat-logout {
-  color: #FC964B;
-  position: relative;
-  display: table-cell;
-  font-weight: bold;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  border-bottom: solid 4px #A87B6A;
-  transition: .4s;
-  width: 50%;
-  text-align: center;
-}
-.btn-flat-logout:hover {
-  color: #FFF;
-  background-color: #A87B6A;
-}
-.btn-flat-new-registration {
-  color: #FC964B;
-  position: relative;
-  display: table-cell;
-  font-weight: bold;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  border-bottom: solid 4px #28a745;
-  transition: .4s;
-  width: 50%;
-  text-align: center;
-}
-.btn-flat-new-registration:hover {
-  color: #FFF;
-  background-color: #28a745;
-}
-.btn-flat-new-session {
-  color: #FC964B;
-  position: relative;
-  display: table-cell;
-  font-weight: bold;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  border-bottom: solid 4px #17a2b8;
-  transition: .4s;
-  width: 50%;
-  text-align: center;
-}
-.btn-flat-new-session:hover {
-  color: #FFF;
-  background-color: #17a2b8;
-}
-
-
-//ナビゲーションバー
-.header-nav ul {
-  display: table;
-  margin: 0 auto;
-  padding: 0;
-  width: 60%;
-  text-align: center;
-  li {
-    display: table-cell;
-    width: 33% ;
-    font-weight: bold;
-    height: 50px;
-    font-size: 18px;
-    border-bottom: 4px solid #668ad8;
-    .nav-list {
-      text-decoration: none;
-      line-height: 50px;
-      transition: .4s;
-    }
-    .nav-list:hover {
-      color: #fff;
-    }
-    a {
-      display: block;
-      width: 100%;
-      color: #555;
-      padding-bottom: 5px;
-    }
-  }
-  li:hover {
-    background-color: #668ad8;
-    color: #fff;
   }
 }
 
@@ -174,6 +116,30 @@ footer {
     margin: 0 auto;
   }
 }
+.index-heading {
+  padding: 0.5rem 1rem;
+  border-bottom: 3px solid #007bff;
+  text-align: center;
+  width: 70%;
+  margin: 0 auto;
+  font-weight: bold;
+}
+//検索コーナー
+.search_box {
+  background-color: #ffeb3b38;
+  padding: 2em;
+  p {
+    font-size: 1.2em;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid #007bff;
+  }
+  div {
+    padding: 20px 0;
+  }
+}
 
 //ユーザー投稿一覧画面
 .post-index {
@@ -201,16 +167,6 @@ footer {
     text-decoration: none;
     padding: 0 10px;
     font-size: 25px;
-  }
-  .post-genre-tag {
-    background-color: orange;
-    padding: 8px;
-    border: 1px solid #ff8100;
-    border-radius: 10px;
-    p {
-      font-size: 13px;
-      text-align: center;
-    }
   }
 }
 .post-index:after {
@@ -264,16 +220,6 @@ footer {
       text-decoration: none;
     }
   }
-  .post-genre-tag {
-    background-color: orange;
-    padding: 4px;
-    border: 1px solid #ff8100;
-    border-radius: 10px;
-    p {
-      font-size: 13px;
-      text-align: center;
-    }
-  }
 }
 .post-area:after {
   position: absolute;
@@ -301,7 +247,6 @@ footer {
   .post_comment_end_user_name {
     color: #454545;
     text-decoration: none;
-    padding: 0 10px;
   }
 }
 .post-comment-area:after {

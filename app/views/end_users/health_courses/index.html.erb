@@ -1,21 +1,19 @@
 <div class="row">
-  <!-- 検索系のサイドバー -->
-  <div class="col-md-2">
-    <p>都道府県を選択</p>
-    <%= form_with(url: health_courses_path, method: :get, local: true) do |f| %>
-      <%= f.select :location, HealthCourse.locations.keys.to_a, class: "form-control", placeholder: "都道府県を選択" %>
-      <%= f.submit "検索" %>
-    <% end %>
+  <!-- 検索　部分テンプレート -->
+  <div class="col-md-3 search_box">
+    <p>検索コーナー</p>
+    <%= render partial: "location_search" %>
   </div>
   <!-- 投稿一覧 -->
   <div class="col-md-9">
-    <h2 class="text-center">講座情報一覧</h2>
+    <h2 class="index-heading">講座情報一覧</h2>
     <div class="row">
       <table class="health-course-table">
         <thead>
           <tr>
-            <th>開催日</th>
-            <th>タイトル</th>
+            <th style="font-size: 20px;">開催日</th>
+            <th style="font-size: 20px;">タイトル</th>
+            <th style="font-size: 20px;">開催場所</th>
           </tr>
         </thead>
         <tbody>
@@ -23,6 +21,7 @@
             <tr class="health-course-clickable" data-link="<%= health_course_path(health_course) %>">
               <td><%= health_course.date.strftime("%Y年%m月%d日") %></td>
               <td><%= health_course.title %></td>
+              <td><%= health_course.location %></td>
             </tr>
           <% end %>
         </tbody>

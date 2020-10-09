@@ -4,15 +4,21 @@ class EndUsers::PostsController < ApplicationController
 
   def index
     @departments = Department.all
-    if params[:name]
+    @genres = Genre.all
+    if params[:name]  #診療科検索のとき
       @department = Department.where(id: params[:name])
       @posts = Post.where(department_id: params[:name]).page(params[:page]).reverse_order
-    else
+    elsif params[:genre_id]  #ジャンル検索のとき
+      @genre = Genre.where(id: params[:genre_id])
+      @posts = Post.where(genre_id: params[:genre_id]).page(params[:page]).reverse_order
+    else  #何も検索していないとき
       @posts = Post.page(params[:page]).reverse_order
     end
   end
 
   def show
+    @departments = Department.all
+    @genres = Genre.all
     @end_user = @post.end_user
     @post_comment = PostComment.new
   end
