@@ -3,7 +3,7 @@ class Admins::HealthCoursesController < ApplicationController
   before_action :ensure_health_course, only: [:show, :edit, :update, :destroy]
 
   def index
-    @health_courses = HealthCourse.page(params[:page]).reverse_order
+    @health_courses = HealthCourse.order(date: "DESC").page(params[:page]).per(10)
   end
 
   def show

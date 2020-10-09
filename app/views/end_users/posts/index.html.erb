@@ -10,7 +10,11 @@
     </div>
     <!-- 診療科別検索 -->
     <div class="row">
-      <%= render "search_department", parents: @parents, parent: @parent %>
+      <p>診療科検索</p>
+      <%= form_with(url: posts_path, method: :get, local: true) do |f| %>
+       <%= f.collection_select :name, @departments, :id, :name, {prompt: "--選択してください--"}, {class: "form-control", placeholder: "都道府県を選択"} %>
+        <%= f.submit "検索" %>
+      <% end %>
     </div>
   </div>
   <!-- 投稿情報 -->
@@ -43,6 +47,7 @@
         </div>
       </div>
     <% end %>
+    <div class="row justify-content-center"><%= paginate @posts %></div>
   </div>
   <!-- 新規投稿、管理人からのお願い -->
   <div class="col-md-3">

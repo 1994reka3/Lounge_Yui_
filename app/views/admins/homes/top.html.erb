@@ -6,7 +6,7 @@
       <% end %>
     </div>
     <div class="row">
-        <%= link_to admins_posts_path(uncheck: "post_comments"), class: "btn btn-outline-danger btn-lg" do %>
+      <%= link_to admins_posts_path(uncheck: "post_comments"), class: "btn btn-outline-danger btn-lg" do %>
         コメント未確認件数  <%= @post_comments.count %>件
       <% end %>
     </div>
