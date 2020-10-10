@@ -31,7 +31,7 @@
       </div>
       <!-- 詳細メイン -->
       <div class="row post-body-main">
-        <p><%= @post.contents %></p>
+        <p><%= simple_format(@post.contents) %></p>
       </div>
       <div class="col-md-12 d-flex justify-content-around post-body-sub">
         <div class="col-md-2 badge badge-pill badge-success"><%= @post.genre.name %></div>
@@ -78,8 +78,17 @@
         投稿する<i class="fas fa-pencil-alt"></i>
       <% end %>
     </div>
-    <div class="row">
-      <p>ご利用上の注意</p>
+    <div class="row rule-board">
+      <div class="rule-board-text">
+        <p>ご利用方法</p>
+        <ol>
+          <li>ご自身が経験した病気や怪我について語りましょう</li>
+          <li>治療上のちょっと悩みや心配事を相談しましょう</li>
+          <li>経験談を語る場なので他人への病気の評価やアドバイスは避けましょう。</li>
+          <li>悪口や誹謗中傷、差別用語、残酷な内容はやめましょう。</li>
+          <li>出会い系情報や営利目的の投稿はやめましょう。</li>
+        </ol>
+      </div>
     </div>
   </div>
 </div>
