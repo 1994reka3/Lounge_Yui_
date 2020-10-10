@@ -1,10 +1,11 @@
 <div class="row">
-  <!-- 検索系のサイドバー -->
-  <div class="col-md-3">
-    <!-- 検索系のサイドバー予定 -->
+  <!-- 検索　部分テンプレート -->
+  <div class="col-md-3 search_box">
+    <p>検索コーナー</p>
+    <%= render partial: "end_users/posts/post_search", locals: {search: @search, departments: @departments, genres: @genres} %>
   </div>
   <!-- 投稿詳細 -->
-  <div class="col-md-6">
+  <div class="col-md-9">
     <div class="row post-area">
       <!-- 投稿確認チェックボックス -->
       <div id="checkbox_<%= @post.id %>" class="col-md-1" style="padding: 0;">
@@ -13,41 +14,34 @@
       <!-- 投稿詳細エリア -->
       <div class="col-md-11" style="padding: 0;">
         <div class="row">
-          <div class="col-md-2 post-genre-tag">
-            <p><%= @post.genre.name %></p>
-          </div>
-          <div class="col-md-4">
+          <div class="col-md-2 ml-1" style="padding: 0;">
             <%= link_to end_user_path(@post.end_user) do %>
-              <p class="end_user_name"><%= @post.end_user.name %><small> さん</small>
-              </p>
+              <%= attachment_image_tag @post.end_user, :image, size: "60x60", format: 'jpeg',fallback: "no_image.png" %>
             <% end %>
           </div>
-          <div class="col-md-4">
-            <p><%= @post.created_at.strftime('%Y/%m/%d') %></p>
-          </div>
-          <!-- いいね数 -->
-          <div class="col-md-1" style="padding: 0;">
-            <% if @post.liked_by?(@post.end_user) %>
-              <i class="fas fa-heart" aria-hidden="true" style="color: #EC407A;"></i>
-              <%= @post.likes.count %>
-            <% else %>
-              <i class="far fa-heart" aria-hidden="true"></i>
-              <%= @post.likes.count %>
+          <div class="col-md-5" style="padding: 0;">
+            <%= link_to end_user_path(@post.end_user) do %>
+              <p class="end_user_name"><%= @post.end_user.name %><small> さん</small></p>
             <% end %>
           </div>
-          <!-- コメント数 -->
-          <div class="col-md-1" style="padding: 0;">
-            <i class="fas fa-comment-alt" style="color: #007bff;"></i>  <%= @post.post_comments.count %>
+          <div class="col-md-2 pt-2">
+            <i class="fas fa-heart" style="color: #EC407A;"></i>
+            <%= @post.likes.count %>
+          </div>
+          <div class="col-md-2 pt-2">
+            <i class="fas fa-comment-alt" style="color: #007bff;"></i>
+            <%= @post.post_comments.count %>
           </div>
           <div class="row">
             <p class="post-title"><%= @post.title %></p>
           </div>
-          <!-- 詳細メイン -->
           <div class="row post-body-main">
-            <p><%= @post.contents %></p>
+            <p><%= simple_format(@post.contents) %></p>
           </div>
-          <div class="row post-body-sub">
-            <p>診療科：<%= @post.department.name %></p>
+          <div class="col-md-12 d-flex justify-content-around post-body-sub">
+            <div class="col-md-1 badge badge-pill badge-success"><%= @post.genre.name %></div>
+            <div class="col-md-6">診療科：<%= @post.department.name %></div>
+            <div class="col-md-4"><%= @post.created_at.strftime('%Y/%m/%d') %></div>
           </div>
           <!-- 削除ボタン表示 -->
           <% if admin_signed_in? %>
@@ -68,10 +62,15 @@
         <!-- 投稿詳細エリア -->
         <div class="col-md-11" style="padding: 0;">
           <div class="row">
+            <div class="col-md-1" style="padding: 0;">
+              <%= link_to end_user_path(post_comment.end_user) do %>
+                <%= attachment_image_tag post_comment.end_user, :image, size: "40x40", format: 'jpeg',fallback: "no_image.png" %>
+              <% end %>
+            </div>
             <div class="col-md-2 pt-1">
               <p>ID: <%= post_comment.id %></p>
             </div>
-            <div class="col-md-6 pt-1">
+            <div class="col-md-5 pt-1">
               <%= link_to end_user_path(post_comment.end_user) do %>
                 <p class="post_comment_end_user_name">
                   <%= post_comment.end_user.name %><small> さん</small>
@@ -81,7 +80,7 @@
             <div class="col-md-4 pt-1">
               <%= post_comment.created_at.strftime('%Y/%m/%d') %>
             </div>
-            <div class="col-md-12"><%= post_comment.comment %></div>
+            <div class="col-md-12"><%= simple_format(post_comment.comment) %></div>
             <div class="col-md-2 offset-md-10">
               <%= link_to "削除",admins_post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-outline-danger btn-sm", "data-confirm" => "本当に削除しますか？" %>
             </div>

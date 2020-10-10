@@ -33,6 +33,6 @@ class Admins::DepartmentsController < ApplicationController
   private
 
   def department_params
-    params.permit(:name, :is_valid)
+    params.require(:department).permit(:name, :is_valid)
   end
 end

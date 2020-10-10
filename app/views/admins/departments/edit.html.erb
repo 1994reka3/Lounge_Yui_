@@ -5,7 +5,7 @@
     </div>
     <!-- 診療科編集フォーム -->
     <div class="row">
-      <%= form_with(url: admins_department_path(@department), local: true) do |f| %>
+      <%= form_for(@department, url: admins_department_path) do |f| %>
         <%= f.text_field :name %>
         <%= f.radio_button :is_valid, true, checked: "checked" %>
         <%= f.label :有効 %>

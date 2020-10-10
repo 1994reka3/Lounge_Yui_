@@ -114,7 +114,7 @@ footer {
   border-bottom: 3px solid #007bff;
   text-align: center;
   width: 70%;
-  margin: 0 auto;
+  margin: 20px auto;
   font-weight: bold;
 }
 //検索コーナー
@@ -312,6 +312,31 @@ footer {
   background: #007bff;
   color: #fff;
 }
+//健康講座情報一覧
+.health-course-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  tr {
+    border-bottom: solid 1px #eee;
+    cursor: pointer;
+    th, td:nth-child(1) {
+      text-align: center;
+      padding: 15px 0;
+    }
+    th, td:nth-child(2) {
+      text-align: center;
+      padding: 15px 0;
+    }
+    th, td:nth-child(3) {
+      text-align: center;
+      padding: 15px 0;
+    }
+  }
+  tr {
+    background-color: #d4g0gd;
+  }
+}
 //健康講座詳細
 .health-course-box {
   padding: 0.5em 1em;
@@ -324,79 +349,16 @@ footer {
     }
   }
 }
-//管理者側投稿一覧
-.post-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-  tr {
-    border-bottom: solid 1px #eee;
-    cursor: pointer;
-    th, td:nth-child(1) {
-      text-align: center;
-      width: 6%;
-      padding: 15px 10px;
-    }
-    th, td:nth-child(2) {
-      text-align: center;
-      width: 6%;
-      padding: 15px 10px;
-    }
-    th, td:nth-child(3) {
-      text-align: center;
-      width: 18%;
-      padding: 15px 10px;
-    }
-    th, td:nth-child(4) {
-      width: 50%;
-      padding: 15px 0;
-    }
-    th, td:nth-child(5) {
-      text-align: center;
-      width: 10%;
-      padding: 15px 0;
-    }
-    th, td:nth-child(6) {
-      text-align: center;
-      width: 5%;
-      padding: 15px 0;
-    }
-    th, td:nth-child(7) {
-      text-align: center;
-      width: 5%;
-      padding: 15px 0;
-    }
-  }
-  tr:hover {
-    background-color: #d4g0gd;
-  }
+//管理者トップ
+.otsukare {
+  background-image: image-url("otsukare.png");
+  background-size: cover;
+  background-position: center;
+  width: 90%;
+  height: 180px;
+  margin: 30px auto;
 }
-//管理者側講座情報一覧
-.health-course-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 80%;
-  margin-left: 50px;
-  tr {
-    border-bottom: solid 1px #eee;
-    cursor: pointer;
-    th, td:nth-child(1) {
-      text-align: center;
-      padding: 15px 0;
-    }
-    th, td:nth-child(2) {
-      text-align: center;
-      padding: 15px 0;
-    }
-    th, td:nth-child(3) {
-      text-align: center;
-      padding: 15px 0;
-    }
-  }
-  tr:hover {
-    background-color: #d4g0gd;
-  }
-}
+
 //管理者側ユーザー 一覧
 .end_user-table {
   border-collapse: collapse;
