@@ -125,16 +125,19 @@ footer {
   font-weight: bold;
   letter-spacing: 0.05em;
 }
-.text {
-  padding: 15px 20px;
-  margin: 0;
-  p {
-    border-bottom: 1px solid #000;
+  .text {
+    padding: 15px 20px;
+    margin: 0;
+    letter-spacing: 0.05em;
+    p {
+      border-bottom: 1px solid #000;
+      padding-top: 20px;
+    }
+    ul {
+      margin: 0 auto;
+    }
   }
-  ul {
-    margin: 0 auto;
-  }
-}
+
 .index-heading {
   padding: 0.5rem 1rem;
   border-bottom: 3px solid #007bff;
@@ -153,7 +156,7 @@ footer {
     text-align: center;
     font-weight: bold;
     letter-spacing: 0.05em;
-    border-bottom: 2px solid #007bff;
+    border-bottom: 2px solid orange;
   }
   div {
     padding: 20px 0;
