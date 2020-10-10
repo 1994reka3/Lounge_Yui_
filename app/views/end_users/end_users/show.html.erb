@@ -1,7 +1,7 @@
 <!-- ユーザー情報 -->
 <div class="row justify-content-center">
   <div class="col-md-8">
-    <div class="row">
+    <div class="row mt-3">
       <h2>ユーザー情報</h2>
       <% if current_end_user == @end_user %>
         <div class="col-md-3">
@@ -31,18 +31,19 @@
       </div>
     </div>
     <!-- ユーザー別投稿一覧 -->
-    <div class="row">
-      <h2 class="text-center"><%= @end_user.name %> さんの投稿一覧</h2>
+    <div class="row mt-5 justify-content-center">
+      <h2 class="index-heading"><%= @end_user.name %> さんの投稿一覧</h2>
+      <p class="text-center">タイトルクリックで詳細が見れます</p>
       <% @posts.each do |post| %>
         <div class="row post-index">
-          <div class="pt-2 post-genre-tag">
+          <div class="pt-2 badge badge-pill badge-success">
             <p><%= post.genre.name %></p>
           </div>
           <div class="col-md-4 pt-2">
             <p><%= post.created_at.strftime('%Y/%m/%d') %></p>
           </div>
           <div class="col-md-2 pt-2">
-            <i class="fas fa-heart" aria-hidden="true" style="color: #EC407A;"></i>
+            <i class="fas fa-heart" style="color: #EC407A;"></i>
             <%= post.likes.count %>
           </div>
           <div class="col-md-2 pt-2">
@@ -55,10 +56,11 @@
             <% end %>
           </div>
           <div class="col-md-12 post-contents-area">
-            <p><%= post.contents %></p>
+            <p><%= simple_format(post.contents) %></p>
           </div>
         </div>
       <% end %>
+      <div class="row justify-content-center"><%= paginate @posts %></div>
     </div>
   </div>
 </div>

@@ -86,13 +86,6 @@ footer {
 
 
 //ユーザー新規登録画面
-.new-post-link {
-  margin: 50px 0;
-  height: 80px;
-  a {
-    line-height: 80px;
-  }
-}
 .post-announcement {
   margin: 2em 0;
   background: #dcefff;
@@ -179,7 +172,35 @@ footer {
   border-color: #ffdb88 #fff8e8 #ffdb88;
   box-shadow: -1px 1px 1px rgba( 0, 0, 0, 0.15);
 }
-
+.new-post-link {
+  margin: 50px 0;
+  height: 80px;
+  a {
+    line-height: 80px;
+  }
+}
+.rule-board {
+  background-image: image-url("board.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 90%;
+  height: 350px;
+  margin: 0 auto;
+  .rule-board-text {
+    font-size: 10px;
+    width: 80%;
+    margin: 40px auto;
+    padding: 0 20px;
+    p {
+      text-align: center;
+      font-size: 13px;
+      color: #ff6b00;
+    }
+    ol {
+      padding-top: 10px;
+    }
+  }
+}
 
 //ユーザー投稿詳細画面
 .post-area {
@@ -290,6 +311,18 @@ footer {
 .comment-btn:hover {
   background: #007bff;
   color: #fff;
+}
+//健康講座詳細
+.health-course-box {
+  padding: 0.5em 1em;
+  margin: 2em auto;
+  border: double 5px #4ec4d3;
+  .health-course-text {
+    padding: 1em 1.5em;
+    h3 {
+      border-bottom: 3px solid #5989cf;
+    }
+  }
 }
 //管理者側投稿一覧
 .post-table {
