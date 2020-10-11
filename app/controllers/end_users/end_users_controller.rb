@@ -6,12 +6,11 @@ class EndUsers::EndUsersController < ApplicationController
     @posts = @end_user.posts.page(params[:page]).reverse_order
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @end_user.update(end_user_params)
-      flash[:success] = "内容を変更しました"
+      flash[:success] = '内容を変更しました'
       redirect_to end_user_path(@end_user)
     else
       render :edit

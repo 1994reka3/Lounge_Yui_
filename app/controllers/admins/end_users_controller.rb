@@ -9,5 +9,4 @@ class Admins::EndUsersController < ApplicationController
     @end_user = EndUser.find(params[:id])
     @posts = @end_user.posts.page(params[:page]).reverse_order
   end
-
 end

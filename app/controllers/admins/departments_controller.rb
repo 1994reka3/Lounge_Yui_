@@ -1,5 +1,4 @@
 class Admins::DepartmentsController < ApplicationController
-
   def index
     @department = Department.new
     @departments = Department.page(params[:page]).reverse_order.per(10)
@@ -8,7 +7,7 @@ class Admins::DepartmentsController < ApplicationController
   def create
     @department = Department.new(department_params)
     if @department.save
-      flash[:success] = "登録が完了しました"
+      flash[:success] = '登録が完了しました'
       redirect_to admins_departments_path
     else
       @departments = Department.page(params[:page]).reverse_order
@@ -23,8 +22,8 @@ class Admins::DepartmentsController < ApplicationController
   def update
     @department = Department.find(params[:id])
     if @department.update(department_params)
-       flash[:success] = "変更しました"
-       redirect_to admins_departments_path
+      flash[:success] = '変更しました'
+      redirect_to admins_departments_path
     else
       render :edit
     end
