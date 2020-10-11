@@ -1,14 +1,14 @@
 class Admins::PostsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :ensure_post, only: [:show, :destroy]
+  before_action :ensure_post, only: %i[show destroy]
 
   def index
     @departments = Department.all
     @genres = Genre.all
     case params[:uncheck]
-    when "posts"
+    when 'posts'
       @posts = Post.where(mark: false).page(params[:page]).reverse_order
-    when "post_comments"
+    when 'post_comments'
       @post_comments = PostComment.where(mark: false)
       @posts = Post.where(id: @post_comments.pluck(:post_id).uniq).page(params[:page]).reverse_order
     else
@@ -23,7 +23,7 @@ class Admins::PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    flash[:success] = "削除しました"
+    flash[:success] = '削除しました'
     redirect_to admins_posts_path
   end
 
@@ -40,7 +40,6 @@ class Admins::PostsController < ApplicationController
   private
 
   def ensure_post
-    @post =  Post.find(params[:id])
+    @post = Post.find(params[:id])
   end
-
 end
