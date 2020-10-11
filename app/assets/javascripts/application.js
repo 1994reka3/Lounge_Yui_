@@ -11,12 +11,12 @@
 // about supported directives.
 //
 //= require popper
-//= require bootstrap-sprockets
 //= require jquery
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require jquery3
+//= require bootstrap-sprockets
 //= require_tree .
 
 // コメントするボタン押したらフォームが表示される
