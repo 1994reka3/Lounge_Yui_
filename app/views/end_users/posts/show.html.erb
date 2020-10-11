@@ -8,26 +8,28 @@
   <div class="col-md-6">
     <div class="row post-area">
       <!-- 詳細上部 -->
-      <div class="col-md-2 ml-1" style="padding: 0;">
-        <%= link_to end_user_path(@post.end_user) do %>
-          <%= attachment_image_tag @post.end_user, :image, size: "60x60", format: 'jpeg',fallback: "no_image.png" %>
-        <% end %>
-      </div>
-      <div class="col-md-5" style="padding: 0;">
-        <%= link_to end_user_path(@post.end_user) do %>
-          <p class="end_user_name"><%= @post.end_user.name %><small> さん</small></p>
-        <% end %>
-      </div>
-      <!-- いいね数 非同期 -->
-      <div id="like-ajax-heart-<%= @post.id %>" class="col-md-2" style="padding: 0;">
-        <%= render partial: "end_users/posts/like-heart", locals: {post: @post} %>
-      </div>
-        <!-- コメント数 非同期 -->
-      <div id="comment_count" class="col-md-2" style="padding: 0;">
-        <%= render partial: "end_users/post_comments/comment_count", locals: {post: @post} %>
-      </div>
-      <div class="row ml-1">
-      <p class="post-title"><%= @post.title %></p>
+      <div class="row">
+        <div class="col-md-2 ml-3" style="padding: 0;">
+          <%= link_to end_user_path(@post.end_user) do %>
+            <%= attachment_image_tag @post.end_user, :image, size: "60x60", format: 'jpeg',fallback: "no_image.png" %>
+          <% end %>
+        </div>
+        <div class="col-md-5" style="padding: 0;">
+          <%= link_to end_user_path(@post.end_user) do %>
+            <p class="end_user_name"><%= @post.end_user.name %><small> さん</small></p>
+          <% end %>
+        </div>
+        <!-- いいね数 非同期 -->
+        <div id="like-ajax-heart-<%= @post.id %>" class="col-md-2" style="padding: 0;">
+          <%= render partial: "end_users/posts/like-heart", locals: {post: @post} %>
+        </div>
+          <!-- コメント数 非同期 -->
+        <div id="comment_count" class="col-md-2" style="padding: 0;">
+          <%= render partial: "end_users/post_comments/comment_count", locals: {post: @post} %>
+        </div>
+        <div class="row ml-1">
+          <p class="post-title"><%= @post.title %></p>
+        </div>
       </div>
       <!-- 詳細メイン -->
       <div class="row post-body-main">
@@ -83,12 +85,13 @@
         <p>ご利用方法</p>
         <ol>
           <li>ご自身が経験した病気や怪我について語りましょう</li>
-          <li>治療上のちょっと悩みや心配事を相談しましょう</li>
-          <li>経験談を語る場なので他人への病気の評価やアドバイスは避けましょう。</li>
-          <li>悪口や誹謗中傷、差別用語、残酷な内容はやめましょう。</li>
-          <li>出会い系情報や営利目的の投稿はやめましょう。</li>
+          <li>治療上のちょっとした悩みや心配事を相談しましょう</li>
+          <li>経験談を語る場なので他人への病気の評価や批判はやめましょう</li>
+          <li>悪口や誹謗中傷、差別用語、残酷な内容はやめましょう</li>
+          <li>出会い系情報や営利目的の投稿はやめましょう</li>
         </ol>
       </div>
     </div>
   </div>
 </div>
+

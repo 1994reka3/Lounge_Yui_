@@ -1,6 +1,6 @@
 <!-- キーワード検索 -->
 <div class="row form-inline">
-  <%= search_form_for(search, url: search_path) do |f| %>
+  <%= search_form_for(search, url: posts_path) do |f| %>
     <%= f.search_field :title_or_contents_cont, class: "form-control col-md-9", placeholder: "キーワード検索" %>
     <%= f.submit "検索", class: "btn btn-warning btn-sm" %>
   <% end %>

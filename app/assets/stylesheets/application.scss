@@ -18,14 +18,14 @@
 body {
   color: #555;
   font-family: 'ヒラギノ丸ゴ ProN','Hiragino Maru Gothic ProN','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',YuGothic,'Yu Gothic',sans-serif;
-  background-image: image-url("1121380.jpg");
+  background-image: image-url("background.jpg");
   background-size: cover;
   background-pisition: center;
   .container {
     background-color: rgba(255,255,255,0.8);
   }
 }
-//トップページ
+/*トップページ*/
 .top-visual {
   background-image: image-url("top.jpg");
   background-size: cover;
@@ -49,7 +49,7 @@ body {
   }
 }
 .rule {
-  background-image: image-url("617127.jpg");
+  background-image: image-url("rule.jpg");
   background-size: cover;
   background-position: center;
   width: 80%;
@@ -64,7 +64,7 @@ body {
     }
   }
 }
-//フッターの位置固定
+/*フッターの位置固定*/
 #wrapper {
   display: flex;
   flex-direction: column;
@@ -75,7 +75,7 @@ footer {
   height: 50px;
   background-color: #000;
 }
-//ナビバー
+/*ナビバー*/
 .nav-item {
   padding: 10px;
   font-size: 17px;
@@ -83,9 +83,35 @@ footer {
     text-decoration: none;
   }
 }
-
-
-//ユーザー新規登録画面
+/*アバウトページ*/
+.about {
+  h1 {
+    text-align: center;
+    padding: 50px 0;
+    border-bottom: 2px solid red;
+    letter-spacing: 0.1em;
+    line-height: 2em;
+  }
+  h4 {
+    text-align: center;
+    padding: 50px 0;
+    letter-spacing: 0.1em;
+    line-height: 2em;
+  }
+  p {
+    text-align: center;
+    letter-spacing: 0.1em;
+    line-height: 2em;
+  }
+}
+.about-image {
+  background-image: image-url("about.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 40%;
+  height: 450px;
+}
+/*ユーザー新規登録画面*/
 .post-announcement {
   margin: 2em 0;
   background: #dcefff;
@@ -99,25 +125,28 @@ footer {
   font-weight: bold;
   letter-spacing: 0.05em;
 }
-.text {
-  padding: 15px 20px;
-  margin: 0;
-  p {
-    border-bottom: 1px solid #000;
+  .text {
+    padding: 15px 20px;
+    margin: 0;
+    letter-spacing: 0.05em;
+    p {
+      border-bottom: 1px solid #000;
+      padding-top: 20px;
+    }
+    ul {
+      margin: 0 auto;
+    }
   }
-  ul {
-    margin: 0 auto;
-  }
-}
+
 .index-heading {
   padding: 0.5rem 1rem;
   border-bottom: 3px solid #007bff;
   text-align: center;
   width: 70%;
-  margin: 0 auto;
+  margin: 20px auto;
   font-weight: bold;
 }
-//検索コーナー
+/*検索コーナー*/
 .search_box {
   background-color: #ffeb3b38;
   padding: 2em;
@@ -127,14 +156,14 @@ footer {
     text-align: center;
     font-weight: bold;
     letter-spacing: 0.05em;
-    border-bottom: 2px solid #007bff;
+    border-bottom: 2px solid orange;
   }
   div {
     padding: 20px 0;
   }
 }
 
-//ユーザー投稿一覧画面
+/*ユーザー投稿一覧画面*/
 .post-index {
   margin: 50px 0;
   position: relative;
@@ -202,7 +231,7 @@ footer {
   }
 }
 
-//ユーザー投稿詳細画面
+/*ユーザー投稿詳細画面*/
 .post-area {
   margin: 50px 0;
   position: relative;
@@ -252,7 +281,7 @@ footer {
   border-color: #ffdb88 #fff8e8 #ffdb88;
   box-shadow: -1px 1px 1px rgba( 0, 0, 0, 0.15);
 }
-//コメント詳細画面
+/*コメント詳細画面*/
 .post-comment-area {
   margin: 50px 0;
   position: relative;
@@ -280,7 +309,7 @@ footer {
   border-color: #fff8e8 #fff #fff8e8;
   box-shadow: -1px 1px 1px rgba( 0, 0, 0, 0.15);
 }
-//いいねボタン
+/*いいねボタン*/
 .like-btn {
   display: block;
   width: 160px;
@@ -296,7 +325,7 @@ footer {
   background: #EC407A;
   color: #fff;
 }
-//コメントボタン
+/*コメントボタン*/
 .comment-btn {
   display: block;
   width: 160px;
@@ -312,7 +341,32 @@ footer {
   background: #007bff;
   color: #fff;
 }
-//健康講座詳細
+/*健康講座情報一覧*/
+.health-course-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  tr {
+    border-bottom: solid 1px #eee;
+    cursor: pointer;
+    th, td:nth-child(1) {
+      text-align: center;
+      padding: 15px 0;
+    }
+    th, td:nth-child(2) {
+      text-align: center;
+      padding: 15px 0;
+    }
+    th, td:nth-child(3) {
+      text-align: center;
+      padding: 15px 0;
+    }
+  }
+  tr {
+    background-color: #d4g0gd;
+  }
+}
+/*健康講座詳細*/
 .health-course-box {
   padding: 0.5em 1em;
   margin: 2em auto;
@@ -324,80 +378,17 @@ footer {
     }
   }
 }
-//管理者側投稿一覧
-.post-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-  tr {
-    border-bottom: solid 1px #eee;
-    cursor: pointer;
-    th, td:nth-child(1) {
-      text-align: center;
-      width: 6%;
-      padding: 15px 10px;
-    }
-    th, td:nth-child(2) {
-      text-align: center;
-      width: 6%;
-      padding: 15px 10px;
-    }
-    th, td:nth-child(3) {
-      text-align: center;
-      width: 18%;
-      padding: 15px 10px;
-    }
-    th, td:nth-child(4) {
-      width: 50%;
-      padding: 15px 0;
-    }
-    th, td:nth-child(5) {
-      text-align: center;
-      width: 10%;
-      padding: 15px 0;
-    }
-    th, td:nth-child(6) {
-      text-align: center;
-      width: 5%;
-      padding: 15px 0;
-    }
-    th, td:nth-child(7) {
-      text-align: center;
-      width: 5%;
-      padding: 15px 0;
-    }
-  }
-  tr:hover {
-    background-color: #d4g0gd;
-  }
+/*管理者トップ*/
+.otsukare {
+  background-image: image-url("otsukare.png");
+  background-size: cover;
+  background-position: center;
+  width: 90%;
+  height: 180px;
+  margin: 30px auto;
 }
-//管理者側講座情報一覧
-.health-course-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 80%;
-  margin-left: 50px;
-  tr {
-    border-bottom: solid 1px #eee;
-    cursor: pointer;
-    th, td:nth-child(1) {
-      text-align: center;
-      padding: 15px 0;
-    }
-    th, td:nth-child(2) {
-      text-align: center;
-      padding: 15px 0;
-    }
-    th, td:nth-child(3) {
-      text-align: center;
-      padding: 15px 0;
-    }
-  }
-  tr:hover {
-    background-color: #d4g0gd;
-  }
-}
-//管理者側ユーザー 一覧
+
+/*管理者側ユーザー 一覧*/
 .end_user-table {
   border-collapse: collapse;
   border-spacing: 0;

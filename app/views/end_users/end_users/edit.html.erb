@@ -3,6 +3,8 @@
 </div>
 <!-- 新規ユーザー情報登録 -->
 <%= form_for(@end_user) do |f| %>
+  <!-- エラーメッセージ -->
+  <%= render 'layouts/error_messages', model: f.object %>
   <div class="form-group row justify-content-center">
     <label class="col-md-3 col-form-label m-2 p-2">ユーザー名
       <span class="small">（20文字以内）</span>
@@ -35,7 +37,6 @@
       <%= attachment_image_tag @end_user, :image, size:"260x260", format: 'jpeg', fallback: "no_image.png" %>
       <%= f.label :image, "プロフィール画像をアップロード", class: "btn btn-outline-secondary rounded-pill" %>
       <%= f.attachment_field :image, style: "display: none;" %>
-      
     </div>
   </div>
   <div class="row justify-content-center">

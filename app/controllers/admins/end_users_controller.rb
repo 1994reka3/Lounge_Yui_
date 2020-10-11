@@ -7,7 +7,7 @@ class Admins::EndUsersController < ApplicationController
 
   def show
     @end_user = EndUser.find(params[:id])
-    @posts = @end_user.posts
+    @posts = @end_user.posts.page(params[:page]).reverse_order
   end
 
 end
