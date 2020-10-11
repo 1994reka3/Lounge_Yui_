@@ -5,7 +5,8 @@
     </div>
     <!-- 診療科編集フォーム -->
     <div class="row">
-      <%= form_for(@department, url: admins_department_path) do |f| %>
+      <%= form_with(model: @department, url: admins_department_path(@department), local: true) do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
         <%= f.text_field :name %>
         <%= f.radio_button :is_valid, true, checked: "checked" %>
         <%= f.label :有効 %>

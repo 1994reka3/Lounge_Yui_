@@ -6,12 +6,12 @@ class Admins::DepartmentsController < ApplicationController
   end
 
   def create
-    @departments = Department.page(params[:page]).reverse_order
     @department = Department.new(department_params)
     if @department.save
       flash[:success] = "登録が完了しました"
       redirect_to admins_departments_path
     else
+      @departments = Department.page(params[:page]).reverse_order
       render :index
     end
   end

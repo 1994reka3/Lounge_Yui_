@@ -2,6 +2,7 @@
 <div class="form-group row justify-content-center">
   <div class="col-md-8">
     <%= form_for(@health_course, url: admins_health_courses_path) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
       <div class="row">
         <label class="col-md-2 col-form-label m-2 p-2">タイトル</label>
         <div class="col-md-8 m-2 p-2">
@@ -16,13 +17,13 @@
       </div>
       <div class="row">
         <label class="col-md-2 col-form-label m-2 p-2">開催場所</label>
-        <div class="col-md-3 m-2 p-2">
+        <div class="col-md-4 m-2 p-2">
           <%= f.select :location, HealthCourse.locations.keys, { prompt: "選択してください" }, {class: "form-control"} %>
         </div>
       </div>
       <div class="row">
         <label class="col-md-2 col-form-label m-2 p-2">開催日</label>
-        <div class="col-md-3 m-2 p-2">
+        <div class="col-md-4 m-2 p-2">
           <%= f.date_field :date, class: "form-control" %>
         </div>
       </div>

@@ -28,9 +28,10 @@
     <!-- ユーザー別投稿一覧 -->
     <div class="row">
       <h2 class="text-center"><%= @end_user.name %> さんの投稿一覧</h2>
+      <p class="text-center">タイトルクリックで詳細が見れます</p>
       <% @posts.each do |post| %>
         <div class="row post-index">
-          <div class="pt-2 post-genre-tag">
+          <div class="pt-2 badge badge-pill badge-success">
             <p><%= post.genre.name %></p>
           </div>
           <div class="col-md-4 pt-2">
@@ -45,15 +46,16 @@
             <%= post.post_comments.count %>
           </div>
           <div class="col-md-12 pt-2">
-            <%= link_to post_path(post) do %>
+            <%= link_to admins_post_path(post) do %>
               <p class="post-title"><%= post.title %></p>
             <% end %>
           </div>
           <div class="col-md-12 post-contents-area">
-            <p><%= post.contents %></p>
+            <p><%= simple_format(post.contents) %></p>
           </div>
         </div>
       <% end %>
+      <div class="row justify-content-center"><%= paginate @posts %></div>
     </div>
   </div>
 </div>
