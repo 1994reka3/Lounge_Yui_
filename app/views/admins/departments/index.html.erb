@@ -1,11 +1,10 @@
 <div class="row justify-content-center">
   <div class="col-md-8">
-    <div class="row">
-      <h4>診療科追加</h4>
-    </div>
+    <div class="row mt-5 mb-3">
     <!-- 診療科追加フォーム -->
-    <div class="row">
-      <%= form_with(url: admins_departments_path, local: true) do |f| %>
+      <%= form_with(model: @department, url: admins_departments_path, local: true) do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
+        <label>診療科追加</label>
         <%= f.text_field :name %>
         <%= f.radio_button :is_valid, true, checked: "checked" %>
         <%= f.label :有効 %>
@@ -15,7 +14,7 @@
       <% end %>
     </div>
     <!-- 診療科一覧 -->
-    <h4>診療科一覧</h4>
+    <h2 class="index-heading">診療科一覧</h2>
     <div class="row">
       <% @departments.each do |department| %>
         <div class="col-md-2"><%= department.id %></div>

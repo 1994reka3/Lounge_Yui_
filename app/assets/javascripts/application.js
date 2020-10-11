@@ -27,12 +27,6 @@ $(document).on('turbolinks:load', function () {
     });
   });
 });
-// 管理者側投稿一覧の行全体クリックしたらshowへ飛ぶ
-$(document).on('turbolinks:load', function () {
-  $(".post-clickable").click(function() {
-    location.href = $(this).data("link");
-  });
-});
 // 管理者側講座一覧の行全体クリックしたらshowへ飛ぶ
 $(document).on('turbolinks:load', function () {
   $(".health-course-clickable").click(function() {

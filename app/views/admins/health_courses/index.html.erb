@@ -1,17 +1,19 @@
 <div class="row">
-  <div class="col-md-2">
-    投稿未確認件数　5件
-    <!-- 投稿コメント未確認件数 -->
+  <!-- 検索　部分テンプレート -->
+  <div class="col-md-3 search_box">
+    <p>検索コーナー</p>
+    <%= render partial: "end_users/health_courses/location_search" %>
   </div>
-  <!-- 投稿一覧 -->
-  <div class="col-md-8">
-    <h2 class="text-center">講座情報一覧</h2>
+  <!-- 講座一覧 -->
+  <div class="col-md-7">
+    <h2 class="index-heading">講座情報一覧</h2>
     <div class="row">
       <table class="health-course-table">
         <thead>
           <tr>
-            <th>開催日</th>
-            <th>タイトル</th>
+            <th style="font-size: 20px;">開催日</th>
+            <th style="font-size: 20px;">タイトル</th>
+            <th style="font-size: 20px;">開催場所</th>
           </tr>
         </thead>
         <tbody>
@@ -19,6 +21,7 @@
             <tr class="health-course-clickable" data-link="<%= admins_health_course_path(health_course) %>">
               <td><%= health_course.date.strftime("%Y年%m月%d日") %></td>
               <td><%= health_course.title %></td>
+              <td><%= health_course.location %></td>
             </tr>
           <% end %>
         </tbody>

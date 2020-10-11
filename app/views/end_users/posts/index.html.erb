@@ -1,36 +1,23 @@
 <div class="row">
-  <!-- 検索系のサイドバー -->
-  <div class="col-md-3">
-    <div class="row">
-      <p>キーワード検索</p>
-      <%= search_form_for(@search, url: search_path) do |f| %>
-        <%= f.search_field :title_or_contents_cont, class: "form-control", placeholder: "キーワードを入力" %>
-        <%= f.submit "検索" %>
-      <% end %>
-    </div>
-    <!-- 診療科別検索 -->
-    <div class="row">
-      <p>診療科検索</p>
-      <%= form_with(url: posts_path, method: :get, local: true) do |f| %>
-       <%= f.collection_select :name, @departments, :id, :name, {prompt: "--選択してください--"}, {class: "form-control", placeholder: "都道府県を選択"} %>
-        <%= f.submit "検索" %>
-      <% end %>
-    </div>
+  <!-- 検索　部分テンプレート -->
+  <div class="col-md-3 search_box">
+    <p>検索コーナー</p>
+    <%= render partial: "post_search", locals: {search: @search, departments: @departments, genres: @genres} %>
   </div>
-  <!-- 投稿情報 -->
+  <!-- 投稿一覧 -->
   <div class="col-md-6">
-    <h2 class="text-center">投稿一覧</h2>
+    <h2 class="index-heading">投稿一覧</h2>
     <p class="text-center">タイトルクリックで詳細が見れます</p>
     <% @posts.each do |post| %>
       <div class="row post-index">
-        <div class="pt-2 post-genre-tag">
+        <div class="pt-2 badge badge-pill badge-success">
           <p><%= post.genre.name %></p>
         </div>
         <div class="col-md-4 pt-2">
           <p><%= post.created_at.strftime('%Y/%m/%d') %></p>
         </div>
         <div class="col-md-2 pt-2">
-          <i class="fas fa-heart" aria-hidden="true" style="color: #EC407A;"></i>
+          <i class="fas fa-heart" style="color: #EC407A;"></i>
           <%= post.likes.count %>
         </div>
         <div class="col-md-2 pt-2">
@@ -43,7 +30,7 @@
           <% end %>
         </div>
         <div class="col-md-12 post-contents-area">
-          <p><%= post.contents %></p>
+          <p><%= simple_format(post.contents) %></p>
         </div>
       </div>
     <% end %>
@@ -56,8 +43,17 @@
         投稿する<i class="fas fa-pencil-alt"></i>
       <% end %>
     </div>
-    <div class="row">
-      <p>ご利用上の注意</p>
+    <div class="row rule-board">
+      <div class="rule-board-text">
+        <p>ご利用方法</p>
+        <ol>
+          <li>ご自身が経験した病気や怪我について語りましょう</li>
+          <li>治療上のちょっとした悩みや心配事を相談しましょう</li>
+          <li>経験談を語る場なので他人への病気の評価や批判はやめましょう</li>
+          <li>悪口や誹謗中傷、差別用語、残酷な内容はやめましょう</li>
+          <li>出会い系情報や営利目的の投稿はやめましょう</li>
+        </ol>
+      </div>
     </div>
   </div>
 </div>

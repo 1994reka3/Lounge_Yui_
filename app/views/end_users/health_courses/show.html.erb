@@ -1,24 +1,27 @@
 <div class="row">
-  <!-- 検索系のサイドバー -->
-  <div class="col-md-3">
-    <p>検索</p>
+  <!-- 検索　部分テンプレート -->
+  <div class="col-md-3 search_box">
+    <p>検索コーナー</p>
+    <%= render partial: "location_search" %>
   </div>
   <!-- 講座詳細 -->
-  <div class="col-md-8">
-    <div class="row">
-      <h3><%= @health_course.title %></h3>
-    </div>
-    <div class="row">
-      <p><%= @health_course.contents %></p>
-    </div>
-    <div class="row">
-      <p>開催場所：<%= @health_course.location %></p>
-    </div>
-    <div class="row">
-      <p>開催日：<%= @health_course.date.strftime("%Y年%m月%d日") %></p>
-    </div>
-    <div class="row">
-      <p>詳細については<strong><%= link_to "こちら", @health_course.site %></strong>をクリックしてください。（情報元のサイトへとびます）</p>
+  <div class="col-md-8 health-course-box">
+    <div class="health-course-text">
+      <div class="row">
+        <h3><%= @health_course.title %></h3>
+      </div>
+      <div class="row">
+        <p><%= simple_format(@health_course.contents) %></p>
+      </div>
+      <div class="row">
+        <p>開催場所：<%= @health_course.location %></p>
+      </div>
+      <div class="row">
+        <p>開催日：<%= @health_course.date.strftime("%Y年%m月%d日") %></p>
+      </div>
+      <div class="row">
+        <p>詳細については<strong><%= link_to "こちら", @health_course.site %></strong>をクリックしてください。（情報元のサイトへとびます）</p>
+      </div>
     </div>
   </div>
 </div>

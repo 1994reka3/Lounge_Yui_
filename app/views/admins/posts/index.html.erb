@@ -1,39 +1,42 @@
 <div class="row">
-  <div class="col-md-2">
-    投稿未確認件数　5件
-    <!-- 投稿コメント未確認件数 -->
+  <!-- 検索　部分テンプレート -->
+  <div class="col-md-3 search_box">
+    <p>検索コーナー</p>
+    <%= render partial: "end_users/posts/post_search", locals: {search: @search, departments: @departments, genres: @genres} %>
   </div>
   <!-- 投稿一覧 -->
-  <div class="col-md-10">
-    <h2 class="text-center">投稿一覧</h2>
-    <div class="row">
-      <table class="post-table">
-        <thead>
-          <tr>
-            <th>No.</th>
-            <th>投稿日</th>
-            <th>タイトル</th>
-            <th>本文</th>
-            <th>ジャンル</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @posts.each do |post| %>
-            <tr class="post-clickable" data-link="<%= admins_post_path(post) %>">
-              <td><%= post.id %></td>
-              <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
-              <td><%= post.title %></td>
-              <td><%= post.contents %></td>
-              <td><%= post.genre.name %></td>
-              <td><i class="fas fa-heart" aria-hidden="true" style="color: #EC407A;"></i><%= post.likes.count %></td>
-              <td><i class="fas fa-comment-alt" style="color: #007bff;"><%= post.post_comments.count %></i></td>
-            </tr>
+  <div class="col-md-9">
+    <h2 class="index-heading">投稿一覧</h2>
+    <p class="text-center">タイトルクリックで詳細が見れます</p>
+    <% @posts.each do |post| %>
+      <div class="row post-index">
+        <div class="pt-2 badge badge-pill badge-success">
+          <p><%= post.genre.name %></p>
+        </div>
+        <div class="col-md-3 pt-2">
+          <p>投稿ID:<%= post.id %></p>
+        </div>
+        <div class="col-md-4 pt-2">
+          <p><%= post.created_at.strftime('%Y/%m/%d') %></p>
+        </div>
+        <div class="col-md-2 pt-2">
+          <i class="fas fa-heart" style="color: #EC407A;"></i>
+          <%= post.likes.count %>
+        </div>
+        <div class="col-md-2 pt-2">
+          <i class="fas fa-comment-alt" style="color: #007bff;"></i>
+          <%= post.post_comments.count %>
+        </div>
+        <div class="col-md-12 pt-2">
+          <%= link_to admins_post_path(post) do %>
+            <p class="post-title"><%= post.title %></p>
           <% end %>
-        </tbody>
-      </table>
-    </div>
-    <div class="row justify-content-center"><%= paginate @posts %></div>
+        </div>
+        <div class="col-md-12 post-contents-area">
+          <p><%= simple_format(post.contents) %></p>
+        </div>
+      </div>
+      <div class="row justify-content-center"><%= paginate @posts %></div>
+    <% end %>
   </div>
 </div>

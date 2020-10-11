@@ -1,4 +1,40 @@
-<div>
-  <h1>ここはTOPページです</h1>
-  <p>Lounge〜結〜</p>
+<div class="row top-visual">
+  <div class="top-headline">
+    <h1>ようこそ</h1>
+    <h1>Lounge<span style="color:rgb(212, 42, 42);"> 〜<ruby>結<rt>ゆい</rt></ruby>〜 </span>へ</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="top-contents">
+    <h4>ご利用の皆様へ</h4>
+    <p>病気や怪我をして不安な気持ちになったことはありませんか？<br>
+       誰かに相談したくてもできなかった経験はありませんか？</p>
+    <p>そんな悩みを抱えている方は大勢いらっしゃいます。</p>
+    <p>ここは、そんな方々の孤独感や不安感を緩和するための談話室です。<br>
+       自らの経験を話したり、相談したりすることで<br>
+       自分の気持ちや、情報を整理しましょう。<br>
+       あなたの経験は誰かの役に立つかもしれません。</p>
+    <p>人と人、人と情報など、<br>
+       色んな<span style="color:rgb(212, 42, 42);">結</span>びつきが生まれることを願っています。</p>
+    <p>コーヒーや紅茶をお出しすることはできませんが、</br>
+       どうぞごゆっくりおくつろぎくださいませ。</p>
+    <p>管理人より</p>
+  </div>
+</div>
+<div class="row rule">
+  <div class="rule-text">
+    <h4>気持ちよくご利用いただくために</h4>
+    <ul>
+      <li>他人の病気への評価や批判は避ける</li>
+      <li>悪口や誹謗中傷、差別用語、残酷な内容などは禁止</li>
+      <li>出会い系情報や営利目的が優先となっている情報は禁止</li>
+    </ul>
+    <p>上記のような投稿がされた場合、管理人側で削除する場合があります。</p><br>
+    <p>さいごに、</p>
+    <p style="color: orange; font-size: 18px;">同じ病気や怪我でも、人によって症状や経過は異なります。<br>
+       自分で判断するのでなく、医師の診察をきちんと受けましょう。</p>
+  </div>
+</div>
+<div class="row justify-content-center">
+  <%= link_to posts_path do %><%= image_tag("logo_enter.png") %><% end %>
 </div>

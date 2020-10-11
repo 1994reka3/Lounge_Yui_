@@ -17,12 +17,54 @@
 
 body {
   color: #555;
-  background-image: image-url("mizutama.jpg");
+  font-family: 'ヒラギノ丸ゴ ProN','Hiragino Maru Gothic ProN','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',YuGothic,'Yu Gothic',sans-serif;
+  background-image: image-url("background.jpg");
   background-size: cover;
   background-pisition: center;
+  .container {
+    background-color: rgba(255,255,255,0.8);
+  }
 }
-
-//フッターの位置固定
+/*トップページ*/
+.top-visual {
+  background-image: image-url("top.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 60%;
+  height: 500px;
+  margin: 0 auto;
+  position: relative;
+  .top-headline {
+    padding: 110px;
+    positiion: absolute;
+  }
+}
+.top-contents {
+  margin: 50px auto;
+  padding-top: 50px;
+  text-align: center;
+  h4 {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #555;
+  }
+}
+.rule {
+  background-image: image-url("rule.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 80%;
+  height: 500px;
+  margin: 0 auto;
+  .rule-text {
+    margin: 70px auto;
+    h4 {
+      text-align: center;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #555;
+    }
+  }
+}
+/*フッターの位置固定*/
 #wrapper {
   display: flex;
   flex-direction: column;
@@ -30,127 +72,46 @@ body {
 }
 footer {
   margin-top: auto;
+  height: 50px;
+  background-color: #000;
 }
-//ヘッダーのログイン関係ボタン
-.login-btns {
-  .btns {
+/*ナビバー*/
+.nav-item {
+  padding: 10px;
+  font-size: 17px;
+  a:hover {
     text-decoration: none;
-    color: #555;
-  }
-  .btns:hover {
-    color: #fff;
   }
 }
-.btn-flat-mypage {
-  position: relative;
-  display: table-cell;
-  font-weight: bold;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  border-bottom: solid 4px #ff7d6e;
-  color: #FC964B;
-  transition: .4s;
-  width: 50%;
-  text-align: center;
-}
-.btn-flat-mypage:hover {
-  background-color: #ff7d6e;
-  color: #FFF;
-}
-.btn-flat-logout {
-  color: #FC964B;
-  position: relative;
-  display: table-cell;
-  font-weight: bold;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  border-bottom: solid 4px #A87B6A;
-  transition: .4s;
-  width: 50%;
-  text-align: center;
-}
-.btn-flat-logout:hover {
-  color: #FFF;
-  background-color: #A87B6A;
-}
-.btn-flat-new-registration {
-  color: #FC964B;
-  position: relative;
-  display: table-cell;
-  font-weight: bold;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  border-bottom: solid 4px #28a745;
-  transition: .4s;
-  width: 50%;
-  text-align: center;
-}
-.btn-flat-new-registration:hover {
-  color: #FFF;
-  background-color: #28a745;
-}
-.btn-flat-new-session {
-  color: #FC964B;
-  position: relative;
-  display: table-cell;
-  font-weight: bold;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  border-bottom: solid 4px #17a2b8;
-  transition: .4s;
-  width: 50%;
-  text-align: center;
-}
-.btn-flat-new-session:hover {
-  color: #FFF;
-  background-color: #17a2b8;
-}
-
-
-//ナビゲーションバー
-.header-nav ul {
-  display: table;
-  margin: 0 auto;
-  padding: 0;
-  width: 60%;
-  text-align: center;
-  li {
-    display: table-cell;
-    width: 33% ;
-    font-weight: bold;
-    height: 50px;
-    font-size: 18px;
-    border-bottom: 4px solid #668ad8;
-    .nav-list {
-      text-decoration: none;
-      line-height: 50px;
-      transition: .4s;
-    }
-    .nav-list:hover {
-      color: #fff;
-    }
-    a {
-      display: block;
-      width: 100%;
-      color: #555;
-      padding-bottom: 5px;
-    }
+/*アバウトページ*/
+.about {
+  h1 {
+    text-align: center;
+    padding: 50px 0;
+    border-bottom: 2px solid red;
+    letter-spacing: 0.1em;
+    line-height: 2em;
   }
-  li:hover {
-    background-color: #668ad8;
-    color: #fff;
+  h4 {
+    text-align: center;
+    padding: 50px 0;
+    letter-spacing: 0.1em;
+    line-height: 2em;
+  }
+  p {
+    text-align: center;
+    letter-spacing: 0.1em;
+    line-height: 2em;
   }
 }
-
-
-//ユーザー新規登録画面
-.new-post-link {
-  margin: 50px 0;
-  height: 80px;
-  a {
-    line-height: 80px;
-  }
+.about-image {
+  background-image: image-url("about.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 40%;
+  height: 450px;
 }
+/*ユーザー新規登録画面*/
 .post-announcement {
   margin: 2em 0;
   background: #dcefff;
@@ -164,18 +125,45 @@ footer {
   font-weight: bold;
   letter-spacing: 0.05em;
 }
-.text {
-  padding: 15px 20px;
-  margin: 0;
-  p {
-    border-bottom: 1px solid #000;
+  .text {
+    padding: 15px 20px;
+    margin: 0;
+    letter-spacing: 0.05em;
+    p {
+      border-bottom: 1px solid #000;
+      padding-top: 20px;
+    }
+    ul {
+      margin: 0 auto;
+    }
   }
-  ul {
-    margin: 0 auto;
+
+.index-heading {
+  padding: 0.5rem 1rem;
+  border-bottom: 3px solid #007bff;
+  text-align: center;
+  width: 70%;
+  margin: 20px auto;
+  font-weight: bold;
+}
+/*検索コーナー*/
+.search_box {
+  background-color: #ffeb3b38;
+  padding: 2em;
+  p {
+    font-size: 1.2em;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid orange;
+  }
+  div {
+    padding: 20px 0;
   }
 }
 
-//ユーザー投稿一覧画面
+/*ユーザー投稿一覧画面*/
 .post-index {
   margin: 50px 0;
   position: relative;
@@ -202,16 +190,6 @@ footer {
     padding: 0 10px;
     font-size: 25px;
   }
-  .post-genre-tag {
-    background-color: orange;
-    padding: 8px;
-    border: 1px solid #ff8100;
-    border-radius: 10px;
-    p {
-      font-size: 13px;
-      text-align: center;
-    }
-  }
 }
 .post-index:after {
   position: absolute;
@@ -223,9 +201,37 @@ footer {
   border-color: #ffdb88 #fff8e8 #ffdb88;
   box-shadow: -1px 1px 1px rgba( 0, 0, 0, 0.15);
 }
+.new-post-link {
+  margin: 50px 0;
+  height: 80px;
+  a {
+    line-height: 80px;
+  }
+}
+.rule-board {
+  background-image: image-url("board.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 90%;
+  height: 350px;
+  margin: 0 auto;
+  .rule-board-text {
+    font-size: 10px;
+    width: 80%;
+    margin: 40px auto;
+    padding: 0 20px;
+    p {
+      text-align: center;
+      font-size: 13px;
+      color: #ff6b00;
+    }
+    ol {
+      padding-top: 10px;
+    }
+  }
+}
 
-
-//ユーザー投稿詳細画面
+/*ユーザー投稿詳細画面*/
 .post-area {
   margin: 50px 0;
   position: relative;
@@ -264,16 +270,6 @@ footer {
       text-decoration: none;
     }
   }
-  .post-genre-tag {
-    background-color: orange;
-    padding: 4px;
-    border: 1px solid #ff8100;
-    border-radius: 10px;
-    p {
-      font-size: 13px;
-      text-align: center;
-    }
-  }
 }
 .post-area:after {
   position: absolute;
@@ -285,7 +281,7 @@ footer {
   border-color: #ffdb88 #fff8e8 #ffdb88;
   box-shadow: -1px 1px 1px rgba( 0, 0, 0, 0.15);
 }
-//コメント詳細画面
+/*コメント詳細画面*/
 .post-comment-area {
   margin: 50px 0;
   position: relative;
@@ -301,7 +297,6 @@ footer {
   .post_comment_end_user_name {
     color: #454545;
     text-decoration: none;
-    padding: 0 10px;
   }
 }
 .post-comment-area:after {
@@ -314,7 +309,7 @@ footer {
   border-color: #fff8e8 #fff #fff8e8;
   box-shadow: -1px 1px 1px rgba( 0, 0, 0, 0.15);
 }
-//いいねボタン
+/*いいねボタン*/
 .like-btn {
   display: block;
   width: 160px;
@@ -330,7 +325,7 @@ footer {
   background: #EC407A;
   color: #fff;
 }
-//コメントボタン
+/*コメントボタン*/
 .comment-btn {
   display: block;
   width: 160px;
@@ -346,8 +341,8 @@ footer {
   background: #007bff;
   color: #fff;
 }
-//管理者側投稿一覧
-.post-table {
+/*健康講座情報一覧*/
+.health-course-table {
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
@@ -356,70 +351,44 @@ footer {
     cursor: pointer;
     th, td:nth-child(1) {
       text-align: center;
-      width: 6%;
-      padding: 15px 10px;
+      padding: 15px 0;
     }
     th, td:nth-child(2) {
       text-align: center;
-      width: 6%;
-      padding: 15px 10px;
+      padding: 15px 0;
     }
     th, td:nth-child(3) {
       text-align: center;
-      width: 18%;
-      padding: 15px 10px;
-    }
-    th, td:nth-child(4) {
-      width: 50%;
-      padding: 15px 0;
-    }
-    th, td:nth-child(5) {
-      text-align: center;
-      width: 10%;
-      padding: 15px 0;
-    }
-    th, td:nth-child(6) {
-      text-align: center;
-      width: 5%;
-      padding: 15px 0;
-    }
-    th, td:nth-child(7) {
-      text-align: center;
-      width: 5%;
       padding: 15px 0;
     }
   }
-  tr:hover {
-    background-color: #d4g0gd;
-  }
-}
-//管理者側講座情報一覧
-.health-course-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 80%;
-  margin-left: 50px;
   tr {
-    border-bottom: solid 1px #eee;
-    cursor: pointer;
-    th, td:nth-child(1) {
-      text-align: center;
-      padding: 15px 0;
-    }
-    th, td:nth-child(2) {
-      text-align: center;
-      padding: 15px 0;
-    }
-    th, td:nth-child(3) {
-      text-align: center;
-      padding: 15px 0;
-    }
-  }
-  tr:hover {
     background-color: #d4g0gd;
   }
 }
-//管理者側ユーザー 一覧
+/*健康講座詳細*/
+.health-course-box {
+  padding: 0.5em 1em;
+  margin: 2em auto;
+  border: double 5px #4ec4d3;
+  .health-course-text {
+    padding: 1em 1.5em;
+    h3 {
+      border-bottom: 3px solid #5989cf;
+    }
+  }
+}
+/*管理者トップ*/
+.otsukare {
+  background-image: image-url("otsukare.png");
+  background-size: cover;
+  background-position: center;
+  width: 90%;
+  height: 180px;
+  margin: 30px auto;
+}
+
+/*管理者側ユーザー 一覧*/
 .end_user-table {
   border-collapse: collapse;
   border-spacing: 0;

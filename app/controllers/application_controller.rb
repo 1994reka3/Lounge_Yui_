@@ -8,9 +8,7 @@ class ApplicationController < ActionController::Base
     @posts = @search.result
   end
 
-
   protected
-
   def after_sign_in_path_for(resource)
     case resource
     when EndUser

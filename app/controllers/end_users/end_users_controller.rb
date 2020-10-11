@@ -3,7 +3,7 @@ class EndUsers::EndUsersController < ApplicationController
   before_action :ensure_end_user
 
   def show
-    @posts = @end_user.posts
+    @posts = @end_user.posts.page(params[:page]).reverse_order
   end
 
   def edit

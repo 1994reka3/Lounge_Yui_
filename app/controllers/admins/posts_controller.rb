@@ -3,6 +3,8 @@ class Admins::PostsController < ApplicationController
   before_action :ensure_post, only: [:show, :destroy]
 
   def index
+    @departments = Department.all
+    @genres = Genre.all
     case params[:uncheck]
     when "posts"
       @posts = Post.where(mark: false).page(params[:page]).reverse_order
@@ -15,6 +17,8 @@ class Admins::PostsController < ApplicationController
   end
 
   def show
+    @departments = Department.all
+    @genres = Genre.all
   end
 
   def destroy
