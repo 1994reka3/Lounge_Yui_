@@ -1,6 +1,3 @@
 class EndUsers::SearchController < ApplicationController
-
-  def index
-  end
-
+  def index; end
 end

@@ -1,20 +1,20 @@
 class EndUsers::PostsController < ApplicationController
   before_action :authenticate_end_user!, except: [:index]
-  before_action :ensure_post, only: [:show, :edit, :update, :destroy]
-  before_action :set_departments, only: [:index, :show, :new, :create, :update]
-  before_action :set_genres, only: [:index, :show, :new, :create, :update]
+  before_action :ensure_post, only: %i[show edit update destroy]
+  before_action :set_departments, only: %i[index show new create update]
+  before_action :set_genres, only: %i[index show new create update]
 
   def index
-    if params[:q]  #キーワード検索のとき
+    if params[:q]  # キーワード検索のとき
       @search = Post.ransack(params[:q])
       @posts = @search.result.page(params[:page]).reverse_order
-    elsif params[:name]  #診療科検索のとき
+    elsif params[:name] # 診療科検索のとき
       @department = Department.where(id: params[:name])
       @posts = Post.where(department_id: params[:name]).page(params[:page]).reverse_order
-    elsif params[:genre_id]  #ジャンル検索のとき
+    elsif params[:genre_id] # ジャンル検索のとき
       @genre = Genre.where(id: params[:genre_id])
       @posts = Post.where(genre_id: params[:genre_id]).page(params[:page]).reverse_order
-    else  #何も検索していないとき
+    else  # 何も検索していないとき
       @posts = Post.page(params[:page]).reverse_order
     end
   end
@@ -32,7 +32,7 @@ class EndUsers::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.end_user_id = current_end_user.id
     if @post.save
-      flash[:success] = "投稿が完了しました"
+      flash[:success] = '投稿が完了しました'
       redirect_to post_path(@post.id)
     else
       render :new
@@ -40,14 +40,12 @@ class EndUsers::PostsController < ApplicationController
   end
 
   def edit
-    if current_end_user.id != @post.end_user_id
-      redirect_to posts_path
-    end
+    redirect_to posts_path if current_end_user.id != @post.end_user_id
   end
 
   def update
     if @post.update(post_params)
-      flash[:success] = "投稿を変更しました"
+      flash[:success] = '投稿を変更しました'
       redirect_to post_path(@post)
     else
       render :edit
@@ -56,11 +54,12 @@ class EndUsers::PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    flash[:success] = "削除しました"
+    flash[:success] = '削除しました'
     redirect_to posts_path
   end
 
   private
+
   def post_params
     params.require(:post).permit(:title, :contents, :department_id, :genre_id)
   end
@@ -76,5 +75,4 @@ class EndUsers::PostsController < ApplicationController
   def set_genres
     @genres = Genre.all
   end
-
 end
