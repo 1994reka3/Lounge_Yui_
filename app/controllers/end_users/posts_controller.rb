@@ -1,11 +1,14 @@
 class EndUsers::PostsController < ApplicationController
   before_action :authenticate_end_user!, except: [:index]
   before_action :ensure_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_departments, only: [:index, :show, :new, :create, :update]
+  before_action :set_genres, only: [:index, :show, :new, :create, :update]
 
   def index
-    @departments = Department.all
-    @genres = Genre.all
-    if params[:name]  #診療科検索のとき
+    if params[:q]  #キーワード検索のとき
+      @search = Post.ransack(params[:q])
+      @posts = @search.result.page(params[:page]).reverse_order
+    elsif params[:name]  #診療科検索のとき
       @department = Department.where(id: params[:name])
       @posts = Post.where(department_id: params[:name]).page(params[:page]).reverse_order
     elsif params[:genre_id]  #ジャンル検索のとき
@@ -17,15 +20,12 @@ class EndUsers::PostsController < ApplicationController
   end
 
   def show
-    @departments = Department.all
-    @genres = Genre.all
     @end_user = @post.end_user
     @post_comment = PostComment.new
   end
 
   def new
     @post = Post.new
-    @departments = Department.all
   end
 
   def create
@@ -61,13 +61,20 @@ class EndUsers::PostsController < ApplicationController
   end
 
   private
-
   def post_params
     params.require(:post).permit(:title, :contents, :department_id, :genre_id)
   end
 
   def ensure_post
     @post = Post.find(params[:id])
+  end
+
+  def set_departments
+    @departments = Department.all
+  end
+
+  def set_genres
+    @genres = Genre.all
   end
 
 end

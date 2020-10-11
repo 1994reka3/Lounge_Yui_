@@ -5,7 +5,7 @@
       <h2>投稿に関するお願いとお知らせ</h2>
     </div>
     <div class="row text justify-content-center">
-      <p>〜　皆様に気持ちよく利用していただけるよう、以下のお願いをしております　〜</p>
+      <p>〜　気持ちよくご利用いただけるよう、以下のお願いをしております　〜</p>
         <ul>
           <li>悪口や誹謗中傷、差別用語、残酷な内容はやめましょう</li>
           <li>出会い系情報や営利目的の投稿はやめましょう</li>
@@ -22,6 +22,8 @@
 <div class="form-group row justify-content-center">
   <div class="col-md-8">
     <%= form_for(@post) do |f| %>
+      <!-- エラーメッセージ -->
+      <%= render 'layouts/error_messages', model: f.object %>
       <div class="row">
         <label class="col-md-2 col-form-label m-2 p-2">タイトル</label>
         <div class="col-md-8 m-2 p-2">
@@ -43,7 +45,7 @@
       <div class="row">
         <label class="col-md-2 col-form-label m-2 p-2">ジャンル</label>
         <div class="col-md-4 m-2 p-2">
-          <%= f.collection_select(:genre_id, Genre.all, :id, :name, { prompt: "選択してください" }, {class: "form-control"}) %>
+          <%= f.collection_select(:genre_id, @genres, :id, :name, { prompt: "選択してください" }, {class: "form-control"}) %>
         </div>
       </div>
       <div class="row justify-content-center">
