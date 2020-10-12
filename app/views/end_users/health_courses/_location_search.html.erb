@@ -1,7 +1,16 @@
 <!-- 都道府県検索 -->
-<div class="row form-inline">
-  <%= form_with(url: health_courses_path, method: :get, local: true) do |f| %>
-    <%= f.select :location, HealthCourse.locations.keys.to_a, {prompt: "都道府県検索"},{class: "form-control"} %>
-    <%= f.submit "検索", class: "btn btn-warning btn-sm" %>
-  <% end %>
-</div>
+<% if admin_signed_in? %>    <!-- 管理者がログインしてる場合 -->
+  <div class="row form-inline">
+    <%= form_with(url: admins_health_courses_path, method: :get, local: true) do |f| %>
+      <%= f.select :location, HealthCourse.locations.keys.to_a, {prompt: "都道府県検索"},{class: "form-control"} %>
+      <%= f.submit "検索", class: "btn btn-warning btn-sm" %>
+    <% end %>
+  </div>
+<% else %>   <!-- それ以外 -->
+  <div class="row form-inline">
+    <%= form_with(url: health_courses_path, method: :get, local: true) do |f| %>
+      <%= f.select :location, HealthCourse.locations.keys.to_a, {prompt: "都道府県検索"},{class: "form-control"} %>
+      <%= f.submit "検索", class: "btn btn-warning btn-sm" %>
+    <% end %>
+  </div>
+<% end %>

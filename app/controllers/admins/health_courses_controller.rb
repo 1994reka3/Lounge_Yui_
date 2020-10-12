@@ -3,7 +3,10 @@ class Admins::HealthCoursesController < ApplicationController
   before_action :ensure_health_course, only: %i[show edit update destroy]
 
   def index
-    @health_courses = HealthCourse.order(date: 'DESC').page(params[:page]).per(10)
+    @health_courses = HealthCourse.order(date: 'ASC').page(params[:page]).per(10)
+    if params[:location]
+      @health_courses = HealthCourse.where(location: params[:location]).page(params[:page]).per(10)
+    end
   end
 
   def show; end
