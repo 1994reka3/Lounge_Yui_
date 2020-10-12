@@ -1,7 +1,7 @@
 class EndUsers::PostsController < ApplicationController
   before_action :authenticate_end_user!, except: [:index]
   before_action :ensure_post, only: %i[show edit update destroy]
-  before_action :set_departments, only: %i[index show new create update]
+  before_action :set_departments, only: %i[index show update]
   before_action :set_genres, only: %i[index show new create update]
 
   def index
@@ -26,9 +26,11 @@ class EndUsers::PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @departments = Department.where(is_valid: true)
   end
 
   def create
+    @departments = Department.where(is_valid: true)
     @post = Post.new(post_params)
     @post.end_user_id = current_end_user.id
     if @post.save
