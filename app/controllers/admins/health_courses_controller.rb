@@ -9,7 +9,9 @@ class Admins::HealthCoursesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @health_course = HealthCourse.find(params[:id])
+  end
 
   def new
     @health_course = HealthCourse.new
