@@ -1,9 +1,9 @@
 class EndUsers::HealthCoursesController < ApplicationController
 
   def index
-    @health_courses = HealthCourse.where('date >= ?', Time.current).order(date: 'ASC').page(params[:page]).per(10)
+    @health_courses = HealthCourse.after_today_asc.page(params[:page]).per(10)
     if params[:location]
-      @health_courses = HealthCourse.where(location: params[:location]).where('date >= ?', Time.current).order(date: 'ASC').page(params[:page]).per(10)
+      @health_courses = HealthCourse.where(location: params[:location]).after_today_asc.page(params[:page]).per(10)
     end
   end
 
