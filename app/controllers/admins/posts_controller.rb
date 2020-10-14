@@ -7,12 +7,12 @@ class Admins::PostsController < ApplicationController
     @genres = Genre.all
     case params[:uncheck]
     when 'posts'
-      @posts = Post.where(mark: false).page(params[:page]).reverse_order
+      @posts = Post.where(mark: false).page(params[:page]).desc_list
     when 'post_comments'
       @post_comments = PostComment.where(mark: false)
-      @posts = Post.where(id: @post_comments.pluck(:post_id).uniq).page(params[:page]).reverse_order
+      @posts = Post.where(id: @post_comments.pluck(:post_id).uniq).page(params[:page]).desc_list
     else
-      @posts = Post.page(params[:page]).reverse_order
+      @posts = Post.page(params[:page]).desc_list
     end
   end
 
