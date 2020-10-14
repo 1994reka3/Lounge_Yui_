@@ -11,4 +11,12 @@ class Post < ApplicationRecord
   def liked_by?(end_user)
     likes.where(end_user_id: end_user.id).exists?
   end
+
+  # 投稿IDの降順に並び替え
+  scope :desc_list, -> { order(id: "DESC")}
+  # 診療科検索
+  scope :department_search, -> name { where(department_id: name) }
+  # ジャンル検索
+  scope :genre_search, -> genre_id { where(genre_id: genre_id) }
+
 end

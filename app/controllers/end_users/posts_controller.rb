@@ -7,15 +7,15 @@ class EndUsers::PostsController < ApplicationController
   def index
     if params[:q]  # キーワード検索のとき
       @search = Post.ransack(params[:q])
-      @posts = @search.result.page(params[:page]).reverse_order
+      @posts = @search.result.page(params[:page]).desc_list
     elsif params[:name] # 診療科検索のとき
-      @department = Department.where(id: params[:name])
-      @posts = Post.where(department_id: params[:name]).page(params[:page]).reverse_order
+      @department = Department.find_by(id: params[:name])
+      @posts = Post.department_search(params[:name]).page(params[:page]).desc_list
     elsif params[:genre_id] # ジャンル検索のとき
-      @genre = Genre.where(id: params[:genre_id])
-      @posts = Post.where(genre_id: params[:genre_id]).page(params[:page]).reverse_order
+      @genre = Genre.find_by(id: params[:genre_id])
+      @posts = Post.genre_search(params[:genre_id]).page(params[:page]).desc_list
     else  # 何も検索していないとき
-      @posts = Post.page(params[:page]).reverse_order
+      @posts = Post.page(params[:page]).desc_list
     end
   end
 
