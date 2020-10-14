@@ -6,7 +6,11 @@
   </div>
   <!-- 投稿一覧 -->
   <div class="col-md-9">
-    <h2 class="index-heading">投稿一覧</h2>
+    <% if @department %>
+      <h2 class="index-heading">” <%= @department.name %> ”の投稿一覧</h2>
+    <% else %>
+      <h2 class="index-heading">投稿一覧</h2>
+    <% end %>
     <p class="text-center">タイトルクリックで詳細が見れます</p>
     <% @posts.each do |post| %>
       <div class="row post-index">
