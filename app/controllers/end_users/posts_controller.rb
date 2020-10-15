@@ -8,9 +8,9 @@ class EndUsers::PostsController < ApplicationController
     if params[:q]  # キーワード検索のとき
       @search = Post.ransack(params[:q])
       @posts = @search.result.page(params[:page]).desc_list
-    elsif params[:name] # 診療科検索のとき
-      @department = Department.find_by(id: params[:name])
-      @posts = Post.department_search(params[:name]).page(params[:page]).desc_list
+    elsif params[:department_id] # 診療科検索のとき
+      @department = Department.find_by(id: params[:department_id])
+      @posts = Post.department_search(params[:department_id]).page(params[:page]).desc_list
     elsif params[:genre_id] # ジャンル検索のとき
       @genre = Genre.find_by(id: params[:genre_id])
       @posts = Post.genre_search(params[:genre_id]).page(params[:page]).desc_list

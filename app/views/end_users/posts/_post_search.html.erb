@@ -9,7 +9,7 @@
   <!-- 診療科別検索 -->
   <div class="row form-inline">
     <%= form_with(url: admins_posts_path, method: :get, local: true) do |f| %>
-      <%= f.collection_select :name, departments, :id, :name, {prompt: "診療科検索"}, {class: "form-control"} %>
+      <%= f.collection_select :department_id, departments, :id, :name, {prompt: "診療科検索"}, {class: "form-control"} %>
       <%= f.submit "検索", class: "btn btn-warning btn-sm" %>
     <% end %>
    </div>
@@ -31,7 +31,7 @@
   <!-- 診療科別検索 -->
   <div class="row form-inline">
     <%= form_with(url: posts_path, method: :get, local: true) do |f| %>
-      <%= f.collection_select :name, departments, :id, :name, {prompt: "診療科検索"}, {class: "form-control"} %>
+      <%= f.collection_select :department_id, departments, :id, :name, {prompt: "診療科検索"}, {class: "form-control"} %>
       <%= f.submit "検索", class: "btn btn-warning btn-sm" %>
     <% end %>
    </div>
