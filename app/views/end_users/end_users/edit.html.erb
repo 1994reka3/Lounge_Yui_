@@ -34,7 +34,7 @@
   <div class="form-group row justify-content-center">
     <label class="col-md-3 col-form-label m-2 p-2">プロフィール画像</label>
     <div class="col-md-5 m-2 p-2">
-      <%= attachment_image_tag @end_user, :image, size:"260x260", format: 'jpeg', fallback: "no_image.png" %>
+      <%= attachment_image_tag @end_user, :image, size:"260x260", format: 'jpeg', fallback: "no_image.png", id: "profile_image" %>
       <%= f.label :image, "プロフィール画像をアップロード", class: "btn btn-outline-secondary rounded-pill" %>
       <%= f.attachment_field :image, style: "display: none;" %>
     </div>

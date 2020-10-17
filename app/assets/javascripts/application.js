@@ -10,32 +10,33 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require popper
-//= require jquery
+//= require jquery3
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require jquery3
 //= require bootstrap-sprockets
+//= require popper
 //= require_tree .
 
-// コメントするボタン押したらフォームが表示される
 $(document).on('turbolinks:load', function () {
-  $(function () {
-    $('#comment-btn').on('click', () => {
-      $('#new-comment').toggle('slow');
-    });
+  // コメントするボタン押したらフォームが表示される
+  $('#comment-btn').on('click', () => {
+    $('#new-comment').toggle('slow');
   });
-});
-// 管理者側講座一覧の行全体クリックしたらshowへ飛ぶ
-$(document).on('turbolinks:load', function () {
+  // 管理者側講座一覧の行全体クリックしたらshowへ飛ぶ
   $(".health-course-clickable").click(function() {
     location.href = $(this).data("link");
   });
-});
-// 管理者側ユーザー一覧の行全体クリックしたらshowへ飛ぶ
-$(document).on('turbolinks:load', function () {
+  // 管理者側ユーザー一覧の行全体クリックしたらshowへ飛ぶ
   $(".end_user-clickable").click(function() {
     location.href = $(this).data("link");
+  });
+  //画像プレビュー
+  $('#end_user_image').on('change', function(e) {
+    let render = new FileReader();
+    render.onload = function(e) {
+      $("#profile_image").attr('src', e.target.result)
+    }
+    render.readAsDataURL(e.target.files[0]);
   });
 });
