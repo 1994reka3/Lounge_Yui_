@@ -4,6 +4,8 @@ class Post < ApplicationRecord
   belongs_to :genre
   has_many :post_comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :tag_maps, dependent: :destroy
+  has_many :tags, through: :tag_maps
 
   validates :title, presence: true
   validates :contents, presence: true
