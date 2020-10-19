@@ -1,8 +1,8 @@
 class EndUsers::PostsController < ApplicationController
   before_action :authenticate_end_user!, except: [:index]
   before_action :ensure_post, only: %i[show edit update destroy]
-  before_action :set_departments, only: %i[index show update]
-  before_action :set_genres, only: %i[index show new create update]
+  before_action :set_departments, only: %i[index show]
+  before_action :set_genres, only: %i[index show new create edit update]
 
   def index
     if params[:q]  # キーワード検索のとき
@@ -33,9 +33,9 @@ class EndUsers::PostsController < ApplicationController
     @departments = Department.where(is_valid: true)
     @post = Post.new(post_params)
     @post.end_user_id = current_end_user.id
-    tag_list = params[:post][:name].split(",")
+    # tag_list = params[:post][:name].split(",")
     if @post.save
-      @post.save_tags(tag_list)
+      # @post.save_tags(tag_list)
       flash[:success] = '投稿が完了しました'
       redirect_to post_path(@post.id)
     else
@@ -44,13 +44,17 @@ class EndUsers::PostsController < ApplicationController
   end
 
   def edit
-    redirect_to posts_path if current_end_user.id != @post.end_user_id
+    @departments = Department.where(is_valid: true)
+    if current_end_user.id != @post.end_user_id
+      redirect_to posts_path
+    end
   end
 
   def update
-    tag_list = params[:post][:name].split(",")
+    @departments = Department.where(is_valid: true)
+    # tag_list = params[:post][:name].split(",")
     if @post.update(post_params)
-      @post.save_tags(tag_list)
+      # @post.save_tags(tag_list)
       flash[:success] = '投稿を変更しました'
       redirect_to post_path(@post)
     else
