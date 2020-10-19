@@ -1,4 +1,4 @@
 class TagMap < ApplicationRecord
   belongs_to :post
-  belongs_tp :tag
+  belongs_to :tag
 end

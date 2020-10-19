@@ -33,7 +33,9 @@ class EndUsers::PostsController < ApplicationController
     @departments = Department.where(is_valid: true)
     @post = Post.new(post_params)
     @post.end_user_id = current_end_user.id
+    tag_list = params[:post][:name].split(",")
     if @post.save
+      @post.save_tags(tag_list)
       flash[:success] = '投稿が完了しました'
       redirect_to post_path(@post.id)
     else
@@ -46,7 +48,9 @@ class EndUsers::PostsController < ApplicationController
   end
 
   def update
+    tag_list = params[:post][:name].split(",")
     if @post.update(post_params)
+      @post.save_tags(tag_list)
       flash[:success] = '投稿を変更しました'
       redirect_to post_path(@post)
     else
