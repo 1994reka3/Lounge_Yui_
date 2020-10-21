@@ -21,7 +21,13 @@
       <%= f.submit "検索", class: "btn btn-warning btn-sm" %>
     <% end %>
   </div>
-  
+  <!-- タグ検索 -->
+  <div class="row justify-content-center">タグ検索</div>
+  <% tags.each do |tag| %>
+    <%= link_to posts_path(tag_id: tag.id), class: "badge badge-warning" do %>
+      <%= tag.name %>(<%= tag.posts.count %>)
+    <% end %>
+  <% end %>
 <!-- 管理者以外 -->
 <% else %>
   <!-- キーワード検索 -->
@@ -45,4 +51,11 @@
       <%= f.submit "検索", class: "btn btn-warning btn-sm" %>
     <% end %>
   </div>
+  <!-- タグ検索 -->
+  <div class="row justify-content-center">タグ検索</div>
+  <% tags.each do |tag| %>
+    <%= link_to posts_path(tag_id: tag.id), class: "badge badge-warning" do %>
+      <%= tag.name %>(<%= tag.posts.count %>)
+    <% end %>
+  <% end %>
 <% end %>
