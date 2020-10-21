@@ -4,11 +4,12 @@
     <p>検索コーナー</p>
     <%= render partial: "post_search", locals: {search: @search, departments: @departments, genres: @genres} %>
     <!-- タグ検索 -->
-    <div class="row form-inline">
+    <div class="row justify-content-center">タグ検索</div>
       <% @tags.each do |tag| %>
-        <%= link_to tag.name, posts_path(tag_id: tag.id) %>
+        <%= link_to posts_path(tag_id: tag.id), class: "badge badge-warning" do %>
+          <%= tag.name %>(<%= tag.posts.count %>)
+        <% end %>
       <% end %>
-    </div>
   </div>
   <div class="col-md-6">
     <!-- 検索した際は検索ワードを表示 -->
