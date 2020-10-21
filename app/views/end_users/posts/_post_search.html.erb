@@ -1,5 +1,6 @@
-<% if admin_signed_in? %>   <!-- 管理者がログインしてる場合 -->
-<!-- キーワード検索 -->
+<!-- 管理者がログインしてる場合 -->
+<% if admin_signed_in? %>
+  <!-- キーワード検索 -->
   <div class="row form-inline">
     <%= search_form_for(search, url: admins_posts_path) do |f| %>
       <%= f.search_field :title_or_contents_cont, class: "form-control col-md-9", placeholder: "キーワード検索" %>
@@ -20,7 +21,9 @@
       <%= f.submit "検索", class: "btn btn-warning btn-sm" %>
     <% end %>
   </div>
-<% else %>  <!-- 管理者以外 -->
+  
+<!-- 管理者以外 -->
+<% else %>
   <!-- キーワード検索 -->
   <div class="row form-inline">
     <%= search_form_for(search, url: posts_path) do |f| %>
