@@ -23,6 +23,7 @@ class EndUsers::PostsController < ApplicationController
 
   def show
     @tags = Tag.all
+    @post_tags = @post.tags
     @end_user = @post.end_user
     @post_comment = PostComment.new
   end
