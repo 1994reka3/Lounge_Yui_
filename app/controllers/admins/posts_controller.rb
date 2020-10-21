@@ -30,6 +30,7 @@ class Admins::PostsController < ApplicationController
 
   def show
     @tags = Tag.all
+    @post_tags = @post.tags
   end
 
   def destroy
