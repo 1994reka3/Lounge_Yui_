@@ -2,14 +2,7 @@
   <!-- 検索　部分テンプレート -->
   <div class="col-md-3 search_box">
     <p>検索コーナー</p>
-    <%= render partial: "post_search", locals: {search: @search, departments: @departments, genres: @genres} %>
-    <!-- タグ検索 -->
-    <div class="row justify-content-center">タグ検索</div>
-      <% @tags.each do |tag| %>
-        <%= link_to posts_path(tag_id: tag.id), class: "badge badge-warning" do %>
-          <%= tag.name %>(<%= tag.posts.count %>)
-        <% end %>
-      <% end %>
+    <%= render partial: "post_search", locals: {search: @search, departments: @departments, genres: @genres, tags: @tags} %>
   </div>
   <div class="col-md-6">
     <!-- 検索した際は検索ワードを表示 -->
@@ -19,6 +12,8 @@
       <h2 class="index-heading">“ <%= @department.name %> ”の投稿一覧</h2>
     <% elsif @genre %>
       <h2 class="index-heading">“ <%= @genre.name %> ”の投稿一覧</h2>
+    <% elsif @tag %>
+      <h2 class="index-heading">“ <%= @tag.name %> ”の投稿一覧</h2>
     <% else %>
       <h2 class="index-heading">投稿一覧</h2>
     <% end %>
