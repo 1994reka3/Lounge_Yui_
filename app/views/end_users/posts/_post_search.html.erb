@@ -9,15 +9,15 @@
   </div>
   <!-- 診療科別検索 -->
   <div class="row form-inline">
-    <%= form_with(url: admins_posts_path, method: :get, local: true) do |f| %>
-      <%= f.collection_select :department_id, departments, :id, :name, {prompt: "診療科検索"}, {class: "form-control"} %>
+    <%= search_form_for(search, url: admins_posts_path) do |f| %>
+      <%= f.collection_select :department_id_eq, departments, :id, :name, {prompt: "診療科検索"}, {class: "form-control"} %>
       <%= f.submit "検索", class: "btn btn-warning btn-sm" %>
     <% end %>
    </div>
   <!-- ジャンル検索 -->
   <div class="row form-inline">
-    <%= form_with(url: admins_posts_path, method: :get, local: true) do |f| %>
-     <%= f.collection_select :genre_id, genres, :id, :name, {prompt: "ジャンル検索"}, {class: "form-control"} %>
+    <%= search_form_for(search, url: admins_posts_path) do |f| %>
+     <%= f.collection_select :genre_id_eq, genres, :id, :name, {prompt: "ジャンル検索"}, {class: "form-control"} %>
       <%= f.submit "検索", class: "btn btn-warning btn-sm" %>
     <% end %>
   </div>
@@ -39,15 +39,15 @@
   </div>
   <!-- 診療科別検索 -->
   <div class="row form-inline">
-    <%= form_with(url: posts_path, method: :get, local: true) do |f| %>
-      <%= f.collection_select :department_id, departments, :id, :name, {prompt: "診療科検索"}, {class: "form-control"} %>
+    <%= search_form_for(search, url: posts_path) do |f| %>
+      <%= f.collection_select :department_id_eq, departments, :id, :name, {prompt: "診療科検索"}, {class: "form-control"} %>
       <%= f.submit "検索", class: "btn btn-warning btn-sm" %>
     <% end %>
    </div>
   <!-- ジャンル検索 -->
   <div class="row form-inline">
-    <%= form_with(url: posts_path, method: :get, local: true) do |f| %>
-     <%= f.collection_select :genre_id, genres, :id, :name, {prompt: "ジャンル検索"}, {class: "form-control"} %>
+    <%= search_form_for(search, url: posts_path) do |f| %>
+     <%= f.collection_select :genre_id_eq, genres, :id, :name, {prompt: "ジャンル検索"}, {class: "form-control"} %>
       <%= f.submit "検索", class: "btn btn-warning btn-sm" %>
     <% end %>
   </div>

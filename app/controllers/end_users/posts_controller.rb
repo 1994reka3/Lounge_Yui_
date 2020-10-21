@@ -1,20 +1,18 @@
 class EndUsers::PostsController < ApplicationController
   before_action :authenticate_end_user!, except: [:index]
   before_action :ensure_post, only: %i[show edit update destroy]
+  before_action :set_search_post, only: [:index, :show]
   before_action :set_departments, only: %i[index show]
   before_action :set_genres, only: %i[index show new create edit update]
 
+  def set_search_post
+    @search = Post.ransack(params[:q])
+  end
+
   def index
     @tags = Tag.all
-    if params[:q]  # キーワード検索のとき
-      @search = Post.ransack(params[:q])
+    if params[:q]  # キーワード、診療科、ジャンル検索のとき
       @posts = @search.result.page(params[:page]).desc_list
-    elsif params[:department_id] # 診療科検索のとき
-      @department = Department.find_by(id: params[:department_id])
-      @posts = Post.department_search(params[:department_id]).page(params[:page]).desc_list
-    elsif params[:genre_id] # ジャンル検索のとき
-      @genre = Genre.find_by(id: params[:genre_id])
-      @posts = Post.genre_search(params[:genre_id]).page(params[:page]).desc_list
     elsif params[:tag_id] #タグ検索のとき
       @tag = Tag.find(params[:tag_id])
       @posts = @tag.posts.page(params[:page]).desc_list
@@ -24,6 +22,7 @@ class EndUsers::PostsController < ApplicationController
   end
 
   def show
+    @tags = Tag.all
     @end_user = @post.end_user
     @post_comment = PostComment.new
   end
@@ -84,9 +83,16 @@ class EndUsers::PostsController < ApplicationController
 
   def set_departments
     @departments = Department.all
+    if params[:q] && params[:q][:department_id_eq]
+      @department = Department.find_by(id: params[:q][:department_id_eq])
+    end
   end
 
   def set_genres
     @genres = Genre.all
+    if params[:q] && params[:q][:genre_id_eq]
+      @genre = Genre.find_by(id: params[:q][:genre_id_eq])
+    end
   end
+
 end

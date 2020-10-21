@@ -31,9 +31,5 @@ class Post < ApplicationRecord
 
   # 投稿IDの降順に並び替え
   scope :desc_list, -> { order(id: "DESC")}
-  # 診療科検索
-  scope :department_search, -> department_id { where(department_id: department_id) }
-  # ジャンル検索
-  scope :genre_search, -> genre_id { where(genre_id: genre_id) }
 
 end
