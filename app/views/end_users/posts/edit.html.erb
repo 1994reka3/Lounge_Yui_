@@ -48,6 +48,12 @@
           <%= f.collection_select(:genre_id, @genres, :id, :name, { prompt: "選択してください" }, {class: "form-control"}) %>
         </div>
       </div>
+      <div class="row">
+        <label class="col-md-2 col-form-label m-2 p-2">タグ付け</label>
+        <div class="col-md-8 m-2 p-2">
+          <%= f.text_field :name, placeholder: "複数のタグをつける場合は','(半角カンマ)で区切ってください", class: "form-control" %>
+        </div>
+      </div>
       <div class="row justify-content-center">
         <div class="actions">
           <div class="col-md-2 m-2 p-2">
