@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    models:
+      department: "診療科"
+    attributes:
+      department:
+        name: "診療科名"
