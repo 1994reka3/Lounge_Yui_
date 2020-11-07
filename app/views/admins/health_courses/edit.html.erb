@@ -18,7 +18,7 @@
       <div class="row">
         <label class="col-md-2 col-form-label m-2 p-2">開催場所</label>
         <div class="col-md-4 m-2 p-2">
-          <%= f.select :location, HealthCourse.locations.keys, { prompt: "選択してください" }, {class: "form-control"} %>
+          <%= f.select :location, HealthCourse.locations.keys, {}, {class: "form-control"} %>
         </div>
       </div>
       <div class="row">
