@@ -9,5 +9,6 @@ ja:
       health_course:
         title: "タイトル"
         contents: "講座概要"
+        location: "開催場所"
         date: "開催日"
         site: "サイトURL"
