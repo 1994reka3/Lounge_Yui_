@@ -2,6 +2,12 @@ ja:
   activerecord:
     models:
       department: "診療科"
+      health_course: "健康講座"
     attributes:
       department:
         name: "診療科名"
+      health_course:
+        title: "タイトル"
+        contents: "講座概要"
+        date: "開催日"
+        site: "サイトURL"
