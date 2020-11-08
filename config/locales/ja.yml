@@ -3,6 +3,7 @@ ja:
     models:
       department: "診療科"
       health_course: "健康講座"
+      end_user: "ユーザー"
     attributes:
       department:
         name: "診療科名"
@@ -12,3 +13,10 @@ ja:
         location: "開催場所"
         date: "開催日"
         site: "サイトURL"
+      end_user:
+        email: "メールアドレス"
+        password: "パスワード"
+        name: "ユーザー名"
+        birthday: "生年月日"
+        postal_code: "郵便番号"
+        encrypted_password: "パスワード（確認用）"
