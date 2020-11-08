@@ -4,6 +4,7 @@ ja:
       department: "診療科"
       health_course: "健康講座"
       end_user: "ユーザー"
+      post: "投稿"
     attributes:
       department:
         name: "診療科名"
@@ -20,3 +21,9 @@ ja:
         birthday: "生年月日"
         postal_code: "郵便番号"
         encrypted_password: "パスワード（確認用）"
+      post:
+        department: "診療科"
+        genre: "ジャンル"
+        title: "タイトル"
+        contents: "本文"
+        
