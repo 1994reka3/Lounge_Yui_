@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Post, type: :model do
+RSpec.describe "投稿", type: :model do
   context "データが正しく保存される" do
     before do
       @post = Post.new
