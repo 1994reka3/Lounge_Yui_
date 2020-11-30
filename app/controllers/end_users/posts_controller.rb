@@ -35,8 +35,7 @@ class EndUsers::PostsController < ApplicationController
 
   def create
     @departments = Department.where(is_valid: true)
-    @post = Post.new(post_params)
-    @post.end_user_id = current_end_user.id
+    @post = current_end_user.posts.new(post_params)
     tag_list = params[:post][:name].split(",")
     if @post.save
       @post.save_tags(tag_list)
