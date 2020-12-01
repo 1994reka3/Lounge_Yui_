@@ -5,10 +5,11 @@ class EndUsers::PostCommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = current_end_user.post_comments.new(post_comment_params)
     @comment.post_id = @post.id
-    if @comment.save
-    else
-      render 'posts/show'
-    end
+    render 'posts/show' unless @comment.save
+    # if @comment.save
+    # else
+    #   render 'posts/show'
+    # end
   end
 
   def destroy
